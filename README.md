@@ -3,7 +3,7 @@
 </p>
 <h1 align="center">艾琳 | Irene</h1>
 <h3 align="center">QQ聊天机器人 | 王者荣耀查询</h3>
-<h4 align="center">基于<a href="https://github.com/nonebot/nonebot2" target="_blank">NoneBot2</a>和<a href="https://github.com/Mrs4s/go-cqhttp" target="_blank">go-cqhttp</a>的qq机器人插件</h4>
+<h4 align="center">基于<a href="https://github.com/nonebot/nonebot2" target="_blank">NoneBot2</a>和<a href="https://github.com/Mrs4s/go-cqhttp" target="_blank">go-cqhttp</a></h4>
 
 ![maven](https://img.shields.io/badge/python-3.8%2B-blue)
 ![maven](https://img.shields.io/badge/nonebot-2.0.0-yellow)
