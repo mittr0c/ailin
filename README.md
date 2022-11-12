@@ -65,7 +65,7 @@
 下载<strong>[go-cqhttp]() </strong>，点击.bat运行，务必选择反向代理，将config.yml中的universal设置为: ws://127.0.0.1:8080/onebot/v11/ws
 
 #### 获取代码
-git clone https://github.com/HibiKier/zhenxun_bot.git
+git clone https://github.com/mittr0c/ailin.git
 
 #### 进入目录
 cd zhenxun_bot
@@ -76,19 +76,21 @@ poetry install          # 安装依赖
 
 ## 配置
 
-```
-1.在.env.dev文件中
+#### 配置.env
 
-  SUPERUSERS = [""]   # 填写你的QQ
+打开.env.dev和.env.prod文件进行配置，有注释
 
-2.在configs/config.py文件中
-  * 数据库配置
+#### 在configs/config.py文件中
+  
+数据库配置
 
-3.在configs/config.yaml文件中 # 该文件需要启动一次后生成
-  * 修改插件配置项
+#### 在configs/config.yaml文件中
 
-4.配置完毕，开始运行
-poetry shell            # 进入虚拟环境
+（该文件需要启动一次后生成）修改插件配置项
+
+#### 配置完毕，开始运行
+
+poetry shell
 python bot.py
 
 ```
