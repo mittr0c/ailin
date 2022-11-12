@@ -68,7 +68,7 @@
 git clone https://github.com/mittr0c/ailin.git
 
 #### 进入目录
-cd zhenxun_bot
+cd ailin
 
 #### 安装依赖
 pip install poetry      # 安装 poetry
@@ -92,5 +92,7 @@ poetry install          # 安装依赖
 
 poetry shell
 python bot.py
+
+配置若有疑问，参见<strong>[NoneBot2文档](https://v2.nonebot.dev/) </strong>
 
 ```
