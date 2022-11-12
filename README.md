@@ -62,7 +62,7 @@
 
 - [ ] 猜英雄
 - 进度：
-    <img src="https://img.shields.io/badge/未完成67%-1.0.0-yellow">
+    <img src="https://img.shields.io/badge/未完成67-已完成33-red">
 
 ## 部署
 
