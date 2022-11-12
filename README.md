@@ -61,6 +61,11 @@
 <progress value="22" max="100">
 </progress>
 
+<p>
+    <span>完成度：</span>
+    <meter min="0" max="500" value="350">350 degrees</meter>
+</p>
+
 ## 部署
 
 #### 配置go-cqhttp
