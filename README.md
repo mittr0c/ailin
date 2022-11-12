@@ -80,13 +80,11 @@ poetry install          # 安装依赖
 
 打开.env.dev和.env.prod文件进行配置，有注释
 
-#### 在configs/config.py文件中
-  
-数据库配置
+#### 配置configs
 
-#### 在configs/config.yaml文件中
+config.py文件包含数据库配置
 
-（该文件需要启动一次后生成）修改插件配置项
+config.yaml文件会在程序启动一次后生成，包含插件配置
 
 #### 配置完毕，开始运行
 
