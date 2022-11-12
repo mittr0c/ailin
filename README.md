@@ -1,2 +1,53 @@
-# ailin
-艾琳 qq机器人 群互动聊天机器人 王者荣耀查询
+<p align="center" >
+  <a href="https://github.com/CMHopeSunshine/LittlePaimon/tree/nonebot2"><img src="http://q.qlogo.cn/headimg_dl?dst_uin=1279605045&spec=640&img_type=jpg" width="256" height="256" alt="LittlePaimon"></a>
+</p>
+<h1 align="center">艾琳 | Irene</h1>
+<h3 align="center">QQ机器人 | 聊天机器人 | 王者荣耀查询</h3>
+<h4 align="center">基于<a href="https://github.com/nonebot/nonebot2" target="_blank">NoneBot2</a>和<a href="https://github.com/Mrs4s/go-cqhttp" target="_blank">go-cqhttp</a>的qq机器人插件</h4>
+
+## 丨简介
+
+艾琳，群聊天互动机器人，实现查战力、查出装、查皮肤等功能，并设置了金币查询机制，用户花金币进行查询，通过签到、群里淘金、小游戏等方式获取金币。所有用户数据储存在本地文件夹。
+
+持续更新中。
+
+## | 主目录
+
+<summary>常规类</summary>
+
+- [x] 签到
+- 发送“签到”或“打卡”，随机获得50-100金币，每人每天限一次。
+
+- [x] 群里淘金
+- 群里发送“淘金”，获得金币数取决于该群人数和该群淘金人数，每个群每人限一次。
+
+- [x] 抽奖
+- 发送“抽奖”，输赢各50%机会，随机50-100金币。
+
+- [x] 金币查询
+- 发送“金币”查自己金币，发送“金币 qq号”查他人金币。
+
+<summary>查询类</summary>
+
+- [x] 查战力
+- 发送“查战力 英雄名”查进行查询。
+
+- [x] 查出装
+- 发送“查出装 英雄名”查进行查询。
+
+- [x] 查皮肤
+- 发送“查皮肤 英雄名”查进行查询。
+
+- [x] 天气
+- 发送“天气 城市名”查进行查询。
+
+<summary>娱乐类</summary>
+
+- [x] AI对联
+- 发送“对联 想说的内容”，或“对联 内容 数字”生成多条对联。
+
+- [x] 点歌台
+- 点歌/qq点歌/网易点歌/酷我点歌/酷狗点歌/咪咕点歌/b站点歌 + 关键词
+
+- [x] 漂流瓶
+- 发送“扔漂流瓶 内容”，还可发送：捡漂流瓶/举报漂流瓶/评论漂流瓶/查看漂流瓶
