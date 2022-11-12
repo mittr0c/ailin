@@ -17,6 +17,15 @@
     <a href="https://qun.qq.com/qqweb/qunpro/share?_wv=3&_wwv=128&inviteCode=MmWrI&from=246610&biz=ka"><img src="https://img.shields.io/badge/QQ频道交流-尘世闲游-blue?style=flat-square" alt="QQ guild"></a>
 </p>
 
+<p align="center">
+    <a href="https://cdn.jsdelivr.net/gh/CMHopeSunshine/mas/LICENSE"><img src="https://img.shields.io/github/license/CMHopeSunshine/LittlePaimon" alt="license"></a>
+    <img src="https://img.shields.io/badge/Python-3.8+-blue" alt="python">
+    <img src="https://img.shields.io/badge/nonebot-2.0.0-green">
+    <img src="https://img.shields.io/badge/go--cqhttp-1.0.0-yellow">
+    <img src="https://img.shields.io/badge/Version-1.0.0Beta-red" alt="version">
+    <a href="https://qun.qq.com/qqweb/qunpro/share?_wv=3&_wwv=128&inviteCode=MmWrI&from=246610&biz=ka"><img src="https://img.shields.io/badge/QQ频道交流-尘世闲游-blue?style=flat-square" alt="QQ guild"></a>
+</p>
+
 ## 丨简介
 
 艾琳，群聊天互动机器人，实现查战力、查出装、查皮肤等功能，并设置了金币查询机制，用户花金币进行查询，通过签到、群里淘金、小游戏等方式获取金币。所有用户数据储存在本地文件夹。
