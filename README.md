@@ -5,10 +5,17 @@
 <h3 align="center">QQ聊天机器人 | 王者荣耀查询</h3>
 <h4 align="center">基于<a href="https://github.com/nonebot/nonebot2" target="_blank">NoneBot2</a>和<a href="https://github.com/Mrs4s/go-cqhttp" target="_blank">go-cqhttp</a></h4>
 
-<a href="https://cdn.jsdelivr.net/gh/CMHopeSunshine/LittlePaimon@master/LICENSE">
 ![maven](https://img.shields.io/badge/python-3.8%2B-blue)
 ![maven](https://img.shields.io/badge/nonebot-2.0.0-yellow)
 ![maven](https://img.shields.io/badge/go--cqhttp-1.0.0-red)
+
+
+<p align="center">
+    <a href="https://cdn.jsdelivr.net/gh/CMHopeSunshine/LittlePaimon@master/LICENSE"><img src="https://img.shields.io/github/license/CMHopeSunshine/LittlePaimon" alt="license"></a>
+    <img src="https://img.shields.io/badge/Python-3.8+-yellow" alt="python">
+    <img src="https://img.shields.io/badge/Version-3.0.0rc2-green" alt="version">
+    <a href="https://qun.qq.com/qqweb/qunpro/share?_wv=3&_wwv=128&inviteCode=MmWrI&from=246610&biz=ka"><img src="https://img.shields.io/badge/QQ频道交流-尘世闲游-blue?style=flat-square" alt="QQ guild"></a>
+</p>
 
 ## 丨简介
 
