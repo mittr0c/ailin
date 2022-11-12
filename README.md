@@ -5,11 +5,15 @@
 <h3 align="center">QQ机器人 | 聊天机器人 | 王者荣耀查询</h3>
 <h4 align="center">基于<a href="https://github.com/nonebot/nonebot2" target="_blank">NoneBot2</a>和<a href="https://github.com/Mrs4s/go-cqhttp" target="_blank">go-cqhttp</a>的qq机器人插件</h4>
 
+![maven](https://img.shields.io/badge/python-3.8%2B-blue)
+![maven](https://img.shields.io/badge/nonebot-2.0.0-yellow)
+![maven](https://img.shields.io/badge/go--cqhttp-1.0.0-red)
+
 ## 丨简介
 
 艾琳，群聊天互动机器人，实现查战力、查出装、查皮肤等功能，并设置了金币查询机制，用户花金币进行查询，通过签到、群里淘金、小游戏等方式获取金币。所有用户数据储存在本地文件夹。
 
-持续更新中。
+持续更新中。如有问题或建议/意见，可以发送issues或加入<strong>[艾琳bot测试群](https://jq.qq.com/?_wv=1027&k=ExnAAm1V) </strong>
 
 ## | 功能
 
