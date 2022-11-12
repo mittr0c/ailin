@@ -58,7 +58,7 @@
 
 
 
-## 部署（通过go-cqhttp）
+## 部署
 
 #### 配置go-cqhttp
 
