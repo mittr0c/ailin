@@ -11,7 +11,7 @@
     <img src="https://img.shields.io/badge/nonebot-2.0.0-green">
     <img src="https://img.shields.io/badge/go--cqhttp-1.0.0-yellow">
     <img src="https://img.shields.io/badge/版本号-1.0.0Beta-red" alt="version">
-    <a href="https://jq.qq.com/?_wv=1027&k=CXHuHAmp"><img src="https://img.shields.io/badge/加入-测试群-pink?style=flat-square" alt="QQ guild"></a>
+    <a href="https://jq.qq.com/?_wv=1027&k=CXHuHAmp"><img src="https://img.shields.io/badge/加入-测试群-pink"alt="QQ guild"></a>
 </p>
 
 ## 丨简介
