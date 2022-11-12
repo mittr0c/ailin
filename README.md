@@ -2,7 +2,7 @@
   <a href="https://github.com/CMHopeSunshine/LittlePaimon/tree/nonebot2"><img src="http://q.qlogo.cn/headimg_dl?dst_uin=1279605045&spec=640&img_type=jpg" width="256" height="256" alt="LittlePaimon"></a>
 </p>
 <h1 align="center">艾琳 | Irene</h1>
-<h3 align="center">QQ机器人 | 聊天机器人 | 王者荣耀查询</h3>
+<h3 align="center">QQ聊天机器人 | 王者荣耀查询</h3>
 <h4 align="center">基于<a href="https://github.com/nonebot/nonebot2" target="_blank">NoneBot2</a>和<a href="https://github.com/Mrs4s/go-cqhttp" target="_blank">go-cqhttp</a>的qq机器人插件</h4>
 
 ![maven](https://img.shields.io/badge/python-3.8%2B-blue)
