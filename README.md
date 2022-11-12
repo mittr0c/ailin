@@ -62,7 +62,7 @@
 - 发送“扔漂流瓶 内容”，还可发送：捡漂流瓶/举报漂流瓶/评论漂流瓶/查看漂流瓶
 
 - [ ] 猜英雄
-- 进度：<img src="https://img.shields.io/badge/67%未完成-33%已完成-red">
+- 进度：<img src="https://img.shields.io/badge/67%未完成-33%已完成-green">
 
 ## 部署
 
