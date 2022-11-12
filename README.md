@@ -43,7 +43,7 @@
 - 发送“查皮肤 英雄名”查进行查询。
 
 - [x] 天气
-- 发送“天气 城市名”查进行查询。
+- 发送“天气 城市名”查进行查询。35% Complete (success)20% Complete (warning)10% Complete (danger)
 
 <summary>娱乐类</summary>
 
