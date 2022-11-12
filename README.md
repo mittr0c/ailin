@@ -62,7 +62,7 @@
 
 #### 配置go-cqhttp
 
-下载<strong>[go-cqhttp]() </strong>，点击.bat运行，务必选择反向代理，将config.yml中的universal设置为: ws://127.0.0.1:8080/onebot/v11/ws
+下载<strong>[go-cqhttp](https://github.com/Mrs4s/go-cqhttp) </strong>，点击.bat运行，务必选择反向代理，将config.yml中的universal设置为: ws://127.0.0.1:8080/onebot/v11/ws
 
 #### 获取代码
 git clone https://github.com/mittr0c/ailin.git
@@ -93,6 +93,6 @@ poetry install          # 安装依赖
 poetry shell
 python bot.py
 
-配置若有疑问，参见<strong>[NoneBot2文档](https://v2.nonebot.dev/) </strong>
+部署或配置若有疑问，参见<strong>[NoneBot2文档](https://v2.nonebot.dev/) </strong>
 
 ```
