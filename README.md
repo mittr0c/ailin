@@ -6,7 +6,6 @@
 <h4 align="center">基于<a href="https://github.com/nonebot/nonebot2" target="_blank">NoneBot2</a>和<a href="https://github.com/Mrs4s/go-cqhttp" target="_blank">go-cqhttp</a></h4>
 
 <p align="center">
-    <a href="https://cdn.jsdelivr.net/gh/CMHopeSunshine/mas/LICENSE"><img src="https://img.shields.io/github/license/CMHopeSunshine/LittlePaimon" alt="license"></a>
     <img src="https://img.shields.io/badge/Python-3.8+-blue" alt="python">
     <img src="https://img.shields.io/badge/nonebot-2.0.0-green">
     <img src="https://img.shields.io/badge/go--cqhttp-1.0.0-yellow">
@@ -62,7 +61,8 @@
 - 发送“扔漂流瓶 内容”，还可发送：捡漂流瓶/举报漂流瓶/评论漂流瓶/查看漂流瓶
 
 - [ ] 猜英雄
-- 进度：<img src="https://img.shields.io/badge/67%未完成-33%已完成-green">
+- 进度：
+    <img src="https://img.shields.io/badge/go--cqhttp-1.0.0-yellow">
 
 ## 部署
 
