@@ -58,13 +58,8 @@
 
 - [ ] 猜英雄
 - 进度：
-<progress value="22" max="100">
-</progress>
 
-<p>
-    <span>完成度：</span>
-    <meter min="0" max="500" value="350">350 degrees</meter>
-</p>
+<div class="g-progress" style="width: 50%"></div>
 
 ## 部署
 
