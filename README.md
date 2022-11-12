@@ -5,6 +5,7 @@
 <h3 align="center">QQ聊天机器人 | 王者荣耀查询</h3>
 <h4 align="center">基于<a href="https://github.com/nonebot/nonebot2" target="_blank">NoneBot2</a>和<a href="https://github.com/Mrs4s/go-cqhttp" target="_blank">go-cqhttp</a></h4>
 
+<a href="https://cdn.jsdelivr.net/gh/CMHopeSunshine/LittlePaimon@master/LICENSE">
 ![maven](https://img.shields.io/badge/python-3.8%2B-blue)
 ![maven](https://img.shields.io/badge/nonebot-2.0.0-yellow)
 ![maven](https://img.shields.io/badge/go--cqhttp-1.0.0-red)
