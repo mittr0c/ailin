@@ -63,8 +63,7 @@
 ```
 # 配置go-cqhttp
 
-在 https://github.com/Mrs4s/go-cqhttp 下载Releases最新版本，运行后选择反向代理，
-  后将gocq的配置文件config.yml中的universal改为universal: ws://127.0.0.1:8080/onebot/v11/ws
+下载<strong>[go-cqhttp]() </strong>，点击.bat运行，务必选择反向代理，将config.yml中的universal设置为: ws://127.0.0.1:8080/onebot/v11/ws
 
 # 获取代码
 git clone https://github.com/HibiKier/zhenxun_bot.git
