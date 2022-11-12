@@ -7,7 +7,7 @@
 
 <p align="center">
 <img src="https://img.shields.io/github/license/mittr0c/ailin" alt="license">
-    <img src="https://img.shields.io/badge/Python-3.8+-blue" alt="python">
+    <img src="https://img.shields.io/badge/python-3.8+-blue" alt="python">
     <img src="https://img.shields.io/badge/nonebot-2.0.0-green">
     <img src="https://img.shields.io/badge/go--cqhttp-1.0.0-yellow">
     <img src="https://img.shields.io/badge/版本号-1.0.0Beta-red" alt="version">
