@@ -93,6 +93,6 @@ poetry install          # 安装依赖
 poetry shell
 python bot.py
 
-部署或配置若有疑问，参见<strong>[NoneBot2文档](https://v2.nonebot.dev/) </strong>
+部署或配置若有疑问，参见[NoneBot2文档](https://v2.nonebot.dev/)、[go-cqhttp帮助中心](https://docs.go-cqhttp.org/)
 
 ```
