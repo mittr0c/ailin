@@ -55,3 +55,47 @@
 
 - [x] 漂流瓶
 - 发送“扔漂流瓶 内容”，还可发送：捡漂流瓶/举报漂流瓶/评论漂流瓶/查看漂流瓶
+
+
+
+## 部署（通过go-cqhttp）
+
+```
+
+# 配置gocq
+
+在 https://github.com/Mrs4s/go-cqhttp 下载Releases最新版本，运行后选择反向代理，
+  后将gocq的配置文件config.yml中的universal改为universal: ws://127.0.0.1:8080/onebot/v11/ws
+
+# 获取代码
+git clone https://github.com/HibiKier/zhenxun_bot.git
+
+# 进入目录
+cd zhenxun_bot
+
+# 安装依赖
+pip install poetry      # 安装 poetry
+poetry install          # 安装依赖
+
+# 进行基础配置
+####请查看 配置 部分####
+
+# 开始运行
+poetry shell            # 进入虚拟环境
+python bot.py
+```
+
+## 配置
+
+```
+1.在.env.dev文件中
+
+  SUPERUSERS = [""]   # 填写你的QQ
+
+2.在configs/config.py文件中
+  * 数据库配置
+
+3.在configs/config.yaml文件中 # 该文件需要启动一次后生成
+  * 修改插件配置项
+
+```
