@@ -43,7 +43,9 @@
 - 发送“查皮肤 英雄名”查进行查询。
 
 - [x] 天气
-- 发送“天气 城市名”查进行查询。35% Complete (success)20% Complete (warning)10% Complete (danger)
+- 发送“天气 城市名”查进行查询。
+
+<p>过去时间</p> <div class="container"> <div class="skills bar1">90%</div> </div> <p>完成进度</p>
 
 <summary>娱乐类</summary>
 
