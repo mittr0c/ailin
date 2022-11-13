@@ -330,7 +330,7 @@ async def _(event: GroupMessageEvent):
 @开发人员.handle()
 async def _():
     await 开发人员.send("机器人名称：艾琳\r"
-                    "当前版本：v1.0.0Beta\r"
+                    "当前版本：v1.0.4\r"
                     "开发者：3142331296")
     await 开发人员.send("开发语言：Python\r"
                     "开发框架：Nonebot2\r"
