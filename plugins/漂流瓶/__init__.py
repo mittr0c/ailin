@@ -6,7 +6,7 @@ from nonebot.adapters.onebot.v11 import Bot, MessageEvent, GroupMessageEvent, GR
 from .data_source import bottle,text_audit
 from .config import black_group
 
-from ..艾琳 import 新用户,减金币,查金币
+from plugins.fun import *
 
 throw = on_command("扔漂流瓶 ", aliases=set(["寄漂流瓶 "]),permission=GROUP, priority=100, block=True)
 get = on_command("捡漂流瓶", priority=100, block=True)
