@@ -13,10 +13,6 @@ nonebot2 = "^2.0.0-beta.1"
 [tool.poetry.dev-dependencies]
 nb-cli = "^0.6.0"
 
-[tool.nonebot]
-plugins = []
-plugin_dirs = ["test/plugins"]
-
 [build-system]
 requires = ["poetry_core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
