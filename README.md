@@ -20,7 +20,7 @@
 
 持续更新中。如有问题或建议/意见，可以发送issues或加入<strong>[艾琳bot测试群](https://jq.qq.com/?_wv=1027&k=ExnAAm1V) </strong>
 
-## | 功能
+## 丨功能
 
 #### | 艾琳bot `菜单` `功能` `帮助` `目录`
 - [ ] 常规类
@@ -42,7 +42,7 @@
 - [ ] 更多
 - - [x] <strong>关于</strong> `关于` `开发人员`
 
-## 部署
+## 丨部署
 
 #### 配置go-cqhttp
 
@@ -58,7 +58,7 @@ cd ailin
 pip install poetry      # 安装 poetry
 poetry install          # 安装依赖
 
-## 配置
+## 丨配置
 
 #### 配置.env
 
