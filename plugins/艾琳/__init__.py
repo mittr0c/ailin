@@ -16,22 +16,29 @@ import requests
 测试权限 = on_command("测试权限")
 时间 = on_command("时间",aliases={"当前时间"})
 qq = on_command("qq")
-开发人员 = on_command("开发人员",aliases={"关于"})
+加金币指令 = on_command("加金币", permission=SUPERUSER)
+减金币指令 = on_command("减金币", permission=SUPERUSER)
+
 #目录
 菜单 = on_command("菜单",aliases={"功能", "帮助" ,"主菜单" ,"目录" , "@艾琳"})
+开发人员 = on_command("开发人员",aliases={"关于"})
+
 #常用功能
 签到 = on_command("签到",aliases={"打卡", "冒泡"})
 金币 = on_command("金币",aliases={"背包", "查看金币","查询","金币查询","查看背包"})
 抽奖 = on_command("抽奖")
 挖矿 = on_command("挖矿",aliases={"淘金","群里淘金","沙里淘金"})
+
 #api
 战力 = on_command("战力",aliases={"查战力", "查战区" , "战区","查看战力","查看战区"})
 查皮肤 = on_command("查皮肤",aliases={"查看皮肤", "皮肤"})
 查出装 = on_command("查出装",aliases={"查看出装", "出装"})
-猜英雄 = on_command("猜英雄")
+百科 = on_command("百科",aliases={"查百科"})
 天气 = on_command("天气",aliases={"查天气"})
 猜技能 = on_command("猜技能",aliases={"技能"})
-#插件
+猜英雄 = on_command("猜英雄")
+
+#插件相关
 点歌台 = on_command("点歌台")
 AI对联 = on_command("AI对联",aliases={"ai对联"})
 
@@ -184,6 +191,25 @@ async def _(event: GroupMessageEvent):
             平台名 = 平台词典[平台]
             await 战力.send(f"【{值}】{平台名}\r区标：{区}（战力{区战力}）\r市标：{市}（战力{市战力}）\r省标：{省}（战力{省战力}）\r时间：{更新时间}")
 
+@百科.handle()
+async def _(event: GroupMessageEvent):
+    qq_id = str(event.user_id)  # 获取qq号
+    新用户(qq_id)
+    当前金币 = 查金币(qq_id)
+    if 当前金币 < 2:
+        await 战力.send("查询需花费2金币，发送“签到”或“群里淘金”获得金币")
+    elif str(event.message) == '天气' or str(event.message) == '查天气':
+        await 查皮肤.send("发送“天气 城市名”进行查询，注意空一格")
+    else:
+        减金币(qq_id,2)
+        值 = str(event.message).split(maxsplit=1)[1]  #返回空格之后的内容
+        结果 = requests.get(f'https://xiaoapi.cn/API/bk.php?m=json&type=bd&msg={值}')
+        结果 = json.loads(结果.content)
+        内容 = 结果['msg']
+        内容 = str(内容).split('。',maxsplit=4)  #返回空格之后的内容
+        for 号 in range (0,4):
+            await 百科.send(内容[号])
+
 @天气.handle()
 async def _(event: GroupMessageEvent):
     qq_id = str(event.user_id)  # 获取qq号
@@ -303,6 +329,20 @@ async def _():
     await AI对联.send("对联 + 想说的内容 ， 或 对联 + 内容 + 数字 ，可生成多条对联")
 
 '''测试类'''
+
+@加金币指令.handle()
+async def _(event: GroupMessageEvent):
+    qq_id= str(event.message).split(maxsplit=2)[1]  #返回空格之后的内容
+    num = int(str(event.message).split(maxsplit=2)[2])  #返回空格之后的内容
+    加金币(qq_id,num)
+    await 加金币指令.send(f"加金币完成，此人当前金币：{查金币(qq_id)}")
+
+@减金币指令.handle()
+async def _(event: GroupMessageEvent):
+    qq_id= str(event.message).split(maxsplit=2)[1]  #返回空格之后的内容
+    num = int(str(event.message).split(maxsplit=2)[2])  #返回空格之后的内容
+    减金币(qq_id,num)
+    await 减金币指令.send(f"减金币完成，此人当前金币：{查金币(qq_id)}")
 
 @测试.handle()
 async def _(event: GroupMessageEvent):
