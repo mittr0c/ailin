@@ -55,8 +55,8 @@ git clone https://github.com/mittr0c/ailin.git
 cd ailin
 
 #### 安装依赖
-pip install poetry      # 安装 poetry
-poetry install          # 安装依赖
+pip install poetry
+poetry install
 
 ## 丨配置
 
