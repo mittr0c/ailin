@@ -35,12 +35,14 @@ qq = on_command("qq")
 查出装 = on_command("查出装",aliases={"查看出装", "出装"})
 百科 = on_command("百科",aliases={"查百科"})
 天气 = on_command("天气",aliases={"查天气"})
+一言 = on_command("一言",aliases={"随机一言"})
 猜技能 = on_command("猜技能",aliases={"技能"})
 猜英雄 = on_command("猜英雄")
 
 #插件相关
 点歌台 = on_command("点歌台")
 AI对联 = on_command("AI对联",aliases={"ai对联"})
+漂流瓶 = on_command("漂流瓶")
 
 '''一些基本定义'''
 
@@ -230,6 +232,19 @@ async def _(event: GroupMessageEvent):
         await 天气.send(f"【{地点}】\r天气：{天气情况}")
         await 天气.send(f"【{地点}】\r{空气情况}")
 
+@一言.handle()
+async def _(event: GroupMessageEvent):
+    qq_id = str(event.user_id)  # 获取qq号
+    新用户(qq_id)
+    当前金币 = 查金币(qq_id)
+    if 当前金币 < 1:
+        await 战力.send("一言需花费1金币，发送“签到”或“群里淘金”获得金币")
+    else:
+        减金币(qq_id,1)
+        结果 = requests.get('https://xiaoapi.cn/API/yiyan.php')
+        结果 = (结果.content).decode('utf-8')
+        await 一言.send(结果)
+
 '''常规'''
 
 @菜单.handle()
@@ -327,6 +342,10 @@ async def _():
 @AI对联.handle()
 async def _():
     await AI对联.send("对联 + 想说的内容 ， 或 对联 + 内容 + 数字 ，可生成多条对联")
+
+@漂流瓶.handle()
+async def _():
+    await 漂流瓶.send("扔漂流瓶 + 想说的内容，还可发送：捡漂流瓶/举报漂流瓶/评论漂流瓶/查看漂流瓶")
 
 '''测试类'''
 
