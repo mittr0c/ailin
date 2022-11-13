@@ -16,7 +16,7 @@ import requests
 测试权限 = on_command("测试权限")
 时间 = on_command("时间",aliases={"当前时间"})
 qq = on_command("qq")
-开发人员 = on_command("开发人员")
+开发人员 = on_command("开发人员",aliases={"关于"})
 #目录
 菜单 = on_command("菜单",aliases={"功能", "帮助" ,"主菜单" ,"目录" , "@艾琳"})
 #常用功能
@@ -31,7 +31,6 @@ qq = on_command("qq")
 猜英雄 = on_command("猜英雄")
 天气 = on_command("天气",aliases={"查天气"})
 猜技能 = on_command("猜技能",aliases={"技能"})
-
 #插件
 点歌台 = on_command("点歌台")
 AI对联 = on_command("AI对联",aliases={"ai对联"})
@@ -209,22 +208,8 @@ async def _(event: GroupMessageEvent):
 
 @菜单.handle()
 async def _():
-    await 菜单.send("├── 常规类\r"
-                  "│ │─ 签到\r"
-                  "│ │─ 群里淘金\r"
-                  "│ │─ 抽奖\r"
-                  "│ └─ 金币查询\r"
-                  "├── 娱乐类\r"
-                  "│ │─ AI对联\r"
-                  "│ │─ 点歌台\r"
-                  "│ └─ 漂流瓶\r"
-                  "├── 查询类\r"
-                  "│ │─ 查战力\r"
-                  "│ │─ 查出装\r"
-                  "│ │─ 查皮肤\r"
-                  "│ └── 天气\r"
-                  "└── 更多\r"
-                  "  └─ 开发人员")
+    图 = r'file:///C:\\Users\\86156\\Desktop\\bot\\ailin\\menu.png'
+    await 菜单.send(MessageSegment.image(图))
 
 @签到.handle()
 async def _(event: GroupMessageEvent):
@@ -251,8 +236,11 @@ async def _(event: GroupMessageEvent):
 async def _(event: GroupMessageEvent):
     qq_id = str(event.user_id)  # 获取签到人qq号
     新用户(qq_id)
-    金 = 查金币(qq_id)
-    await 金币.send(f"当前金币：{金}")
+    if str(event.message) == '金币' or str(event.message) == '背包'  or str(event.message) == '查金币':
+        await 金币.send(f"当前金币：{查金币(qq_id)}")
+    else:
+        qq_id = str(event.message).split(maxsplit=1)[1]  #返回空格之后的内容
+        await 金币.send(f"当前金币：{查金币(qq_id)}")
 
 @抽奖.handle()
 async def _(event: GroupMessageEvent):
@@ -349,8 +337,10 @@ async def _(event: GroupMessageEvent):
 @开发人员.handle()
 async def _():
     await 开发人员.send("机器人名称：艾琳\r"
-                    "开发者：3142331296\r"
-                    "开发语言：Python\r"
+                    "当前版本：v1.0.0Beta\r"
+                    "开发者：3142331296")
+    await 开发人员.send("开发语言：Python\r"
                     "开发框架：Nonebot2\r"
-                    "执行框架：go-cqhttp")
-    await 开发人员.send("文档：github.com/mittr0c/ailin/blob/main/README.md")
+                    "执行框架：go-cqhttp\r" 
+                    "开源证书：AGPL-3.0\r" 
+                    "源码：github.com/mittr0c/ailin")
