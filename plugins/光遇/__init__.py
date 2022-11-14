@@ -7,7 +7,7 @@
 #  在此插件基础上修改了部分代码
 
 import httpx
-import datetime,time
+import datetime
 import json
 
 import nonebot
@@ -116,7 +116,6 @@ class SkyDaily:
 @daily_yoli.handle()
 async def _(bot: Bot, event: GroupMessageEvent):
     qq_id = str(event.user_id)  # 获取qq号
-    新用户(qq_id)
     if 查金币(qq_id) < 3:
         await daily_yoli.send("需花费3金币，发送“签到”或“群里淘金”获得金币")
     else:
