@@ -98,10 +98,10 @@ python bot.py
 
 新增功能：jieba
 
-### v1.2.0
+### v1.1.0
 
 对存档地址进行了优化；相应地，对各插件的代码进行了优化
 
-如果你之前使用了v1.2.0以前版本的艾琳，请务必先运行./data目录下的 <strong>用户存档路径变更.py</strong> 和 <strong>群存档路径变更.py</strong> ，运行一遍后你可以删除 ./data/用户 和 ./data/群 中的所有子文件夹，并可以删除 <strong>用户存档路径变更.py</strong> 和 <strong>群存档路径变更.py</strong> 
+如果你之前使用了v1.1.0以前版本的艾琳，请务必先运行./data目录下的 <strong>用户存档路径变更.py</strong> 和 <strong>群存档路径变更.py</strong> ，运行一遍后你可以删除 ./data/用户 和 ./data/群 中的所有子文件夹，并可以删除 <strong>用户存档路径变更.py</strong> 和 <strong>群存档路径变更.py</strong> 
 
-如果你未使用过v1.2.0以前版本的艾琳，可以直接删除 <strong>用户存档路径变更.py</strong> 和 <strong>群存档路径变更.py</strong> 
+如果你未使用过v1.1.0以前版本的艾琳，可以直接删除 <strong>用户存档路径变更.py</strong> 和 <strong>群存档路径变更.py</strong> 
