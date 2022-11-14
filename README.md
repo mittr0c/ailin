@@ -18,37 +18,37 @@
 
 艾琳，群聊天互动机器人，实现查战力、查出装、查皮肤、光遇每日任务等功能，并设置了金币查询机制，用户花金币进行查询，通过签到、群里淘金、小游戏等方式获取金币。所有用户数据储存在本地文件夹。
 
-持续更新中。如有问题或建议/意见，可以发送issues或加入<strong>[艾琳bot测试群](https://jq.qq.com/?_wv=1027&k=ExnAAm1V) <4>
+持续更新中。如有问题或建议/意见，可以发送issues或加入<strong>[艾琳bot测试群](https://jq.qq.com/?_wv=1027&k=ExnAAm1V) </strong>
 
 ## 丨功能
 
 #### | 艾琳bot `菜单` `功能` `帮助` `目录`
 - [ ] 常规类
-- - [x] <strong>签到<4>  `签到` `打卡` `冒泡`
-- - [x] <strong>金币查询<4> `金币` `金币 qq号`
+- - [x] <strong>签到</strong>  `签到` `打卡` `冒泡`
+- - [x] <strong>金币查询</strong> `金币` `金币 qq号`
 - [ ] 查询类
-- - [x] <strong>查战力<4> `查战力 英雄名`
-- - [x] <strong>查出装<4> `查出装 英雄名`
-- - [x] <strong>查皮肤<4> `查皮肤 英雄名`
-- - [x] <strong>光遇<4> `光遇今日攻略`
-- - [x] <strong>天气<4> `天气 城市名`
-- - [x] <strong>查百科<4> `百科 xxx`
+- - [x] <strong>查战力</strong> `查战力 英雄名`
+- - [x] <strong>查出装</strong> `查出装 英雄名`
+- - [x] <strong>查皮肤</strong> `查皮肤 英雄名`
+- - [x] <strong>光遇</strong> `光遇今日攻略`
+- - [x] <strong>天气</strong> `天气 城市名`
+- - [x] <strong>查百科</strong> `百科 xxx`
 - [ ] 娱乐类
-- - [x] <strong>获得金币<4> `淘金` `抽奖`
-- - [x] <strong>Jieba<4> `jieba xxx` `拆词 xxx`
-- - [x] <strong>AI对联<4> `对联` `对联 xxx 5`
-- - [x] <strong>点歌台<4> `点歌台` `点歌 xxx`
-- - [x] <strong>漂流瓶<4> `扔漂流瓶 xxx` `捡漂流瓶`
-- - [x] <strong>猜英雄<4> `猜英雄` `猜英雄 英雄名`
-- - [x] <strong>一言<4> `一言` `随机一言`
+- - [x] <strong>获得金币</strong> `淘金` `抽奖`
+- - [x] <strong>Jieba</strong> `jieba xxx` `拆词 xxx`
+- - [x] <strong>AI对联</strong> `对联` `对联 xxx 5`
+- - [x] <strong>点歌台</strong> `点歌台` `点歌 xxx`
+- - [x] <strong>漂流瓶</strong> `扔漂流瓶 xxx` `捡漂流瓶`
+- - [x] <strong>猜英雄</strong> `猜英雄` `猜英雄 英雄名`
+- - [x] <strong>一言</strong> `一言` `随机一言`
 - [ ] 更多
-- - [x] <strong>关于<4> `关于` `开发人员`
+- - [x] <strong>关于</strong> `关于` `开发人员`
 
 ## 丨部署
 
 #### 配置go-cqhttp
 
-下载<strong>[go-cqhttp](https://github.com/Mrs4s/go-cqhttp) <4>，点击.bat运行，务必选择反向代理，将config.yml中的universal设置为: ws://127.0.0.1:13579/onebot7116
+下载<strong>[go-cqhttp](https://github.com/Mrs4s/go-cqhttp) </strong>，点击.bat运行，务必选择反向代理，将config.yml中的universal设置为: ws://127.0.0.1:13579/onebot/v11/ws
 
 #### 获取代码
 
@@ -90,7 +90,7 @@ python bot.py
 
 对存档地址进行了优化；相应地，对各插件的代码进行了优化
 
-如果你之前使用了v1.1.0以前版本的艾琳，请务必先运行./data目录下的 <strong>用户存档路径变更.py<4> 和 <strong>群存档路径变更.py<4> ，运行一遍后你可以删除 ./data/用户 和 ./data/群 中的所有子文件夹，并可以删除 <strong>用户存档路径变更.py<4> 和 <strong>群存档路径变更.py<4> 
+如果你之前使用了v1.1.0以前版本的艾琳，请务必先运行./data目录下的 <strong>用户存档路径变更.py</strong> 和 <strong>群存档路径变更.py</strong> ，运行一遍后你可以删除 ./data/用户 和 ./data/群 中的所有子文件夹，并可以删除 <strong>用户存档路径变更.py</strong> 和 <strong>群存档路径变更.py</strong> 
 
 ### v1.0.7 Beta
 
