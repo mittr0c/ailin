@@ -20,7 +20,6 @@ remove = on_command("删除漂流瓶 ",permission=SUPERUSER, priority=100, block
 @throw.handle()
 async def thr(bot: Bot, event: GroupMessageEvent):
     qq_id = event.user_id
-    新用户(qq_id)
     if 查金币(qq_id) < 1:
         await throw.finish("扔漂流瓶需要花费1金币，发“签到”获得金币")
     else:
@@ -54,12 +53,10 @@ async def thr(bot: Bot, event: GroupMessageEvent):
 @get.handle()
 async def g(bot: Bot, event: GroupMessageEvent):
     qq_id = event.user_id
-    新用户(qq_id)
     if 查金币(qq_id) < 1:
         await throw.finish("捡漂流瓶需要花费1金币，发“签到”获得金币")
     else:
         减金币(qq_id, 1)
-
         if not bottle.select():
             await get.finish("好像一个瓶子也没有呢..要不要扔一个？")
         else:
