@@ -10,7 +10,7 @@
     <img src="https://img.shields.io/badge/python-3.8+-blue" alt="python">
     <img src="https://img.shields.io/badge/nonebot-2.0.0-green">
     <img src="https://img.shields.io/badge/go--cqhttp-1.0.0-yellow">
-    <img src="https://img.shields.io/badge/版本号-1.2.0-red" alt="version">
+    <img src="https://img.shields.io/badge/版本号-1.2.1Beta-red" alt="version">
     <a href="https://jq.qq.com/?_wv=1027&k=CXHuHAmp"><img src="https://img.shields.io/badge/加入-测试群-pink"alt="QQ guild"></a>
 </p>
 
