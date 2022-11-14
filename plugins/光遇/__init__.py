@@ -4,6 +4,8 @@
 # @Github    : Kaguya
 # @Software: PyCharm
 
+#  在此插件基础上修改了部分代码
+
 import httpx
 import datetime,time
 import json
@@ -113,30 +115,14 @@ class SkyDaily:
 
 @daily_yoli.handle()
 async def _(bot: Bot, event: GroupMessageEvent):
-    group_id = event.group_id   # 获取群号
     qq_id = str(event.user_id)  # 获取qq号
     新用户(qq_id)
-    新群(group_id)
-    with open(f'data/艾琳/群/{group_id}/信息2.json', 'r', encoding='utf-8')as f:
-        dic = json.load(f)
-    查询日期 = dic['Skydate']
-    当前日期 = time.strftime('%Y-%m-%d', time.localtime(time.time()))
-    if 查询日期 == 123090123:   #if 查询日期 == 当前日期:
-        await daily_yoli.send("【光遇今日攻略】本群已经有人查询过了，请明天再来~")
-    elif 查金币(qq_id) < 15:
-        await daily_yoli.send("需花费15金币，发送“签到”或“群里淘金”获得金币")
+    if 查金币(qq_id) < 3:
+        await daily_yoli.send("需花费3金币，发送“签到”或“群里淘金”获得金币")
     else:
-        减金币(qq_id,15)
-        with open(f'data/艾琳/群/{group_id}/信息2.json', 'r+', encoding='utf-8')as f:
-            dic = json.load(f)
-            dic['Skydate'] = time.strftime('%Y-%m-%d', time.localtime(time.time()))
-            dic['SkyTimes'] = dic['SkyTimes'] + 1
-            f.seek(0)  # 指向文本开头
-            f.truncate()  # 清空文本
-            json.dump(dic, f)   #写入数据
+        减金币(qq_id,3)
         try:
             sky = SkyDaily()
-
             #图像版：
             results = await sky.get_data()
             光遇结果 = str(results).split('[CQ:image,file=')
