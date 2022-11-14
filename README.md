@@ -10,13 +10,13 @@
     <img src="https://img.shields.io/badge/python-3.8+-blue" alt="python">
     <img src="https://img.shields.io/badge/nonebot-2.0.0-green">
     <img src="https://img.shields.io/badge/go--cqhttp-1.0.0-yellow">
-    <img src="https://img.shields.io/badge/版本号-1.0.7Beta-red" alt="version">
+    <img src="https://img.shields.io/badge/版本号-1.2.0-red" alt="version">
     <a href="https://jq.qq.com/?_wv=1027&k=CXHuHAmp"><img src="https://img.shields.io/badge/加入-测试群-pink"alt="QQ guild"></a>
 </p>
 
 ## 丨简介
 
-艾琳，群聊天互动机器人，实现查战力、查出装、查皮肤等功能，并设置了金币查询机制，用户花金币进行查询，通过签到、群里淘金、小游戏等方式获取金币。所有用户数据储存在本地文件夹。
+艾琳，群聊天互动机器人，实现查战力、查出装、查皮肤、光遇每日任务等功能，并设置了金币查询机制，用户花金币进行查询，通过签到、群里淘金、小游戏等方式获取金币。所有用户数据储存在本地文件夹。
 
 持续更新中。如有问题或建议/意见，可以发送issues或加入<strong>[艾琳bot测试群](https://jq.qq.com/?_wv=1027&k=ExnAAm1V) </strong>
 
@@ -35,9 +35,11 @@
 - - [x] <strong>查百科</strong> `百科 xxx`
 - [ ] 娱乐类
 - - [x] <strong>获得金币</strong> `淘金` `抽奖`
+- - [x] <strong>Jieba</strong> `jieba xxx` `拆词 xxx`
 - - [x] <strong>AI对联</strong> `对联` `对联 xxx 5`
 - - [x] <strong>点歌台</strong> `点歌台` `点歌 xxx`
 - - [x] <strong>漂流瓶</strong> `扔漂流瓶 xxx` `捡漂流瓶`
+- - [x] <strong>猜英雄</strong> `猜英雄` `猜英雄 英雄名`
 - - [x] <strong>一言</strong> `一言` `随机一言`
 - [ ] 更多
 - - [x] <strong>关于</strong> `关于` `开发人员`
@@ -90,4 +92,16 @@ python bot.py
 
 ### v1.0.6
 
-光遇每日任务查询
+新增功能：光遇今日攻略
+
+### v1.0.7 Beta
+
+新增功能：jieba
+
+### v1.2.0
+
+对存档地址进行了优化；相应地，对各插件的代码进行了优化
+
+如果你之前使用了v1.2.0以前版本的艾琳，请务必先运行./data目录下的 <strong>用户存档路径变更.py</strong> 和 <strong>群存档路径变更.py</strong> ，运行一遍后你可以删除 ./data/用户 和 ./data/群 中的所有子文件夹，并可以删除 <strong>用户存档路径变更.py</strong> 和 <strong>群存档路径变更.py</strong> 
+
+如果你未使用过v1.2.0以前版本的艾琳，可以直接删除 <strong>用户存档路径变更.py</strong> 和 <strong>群存档路径变更.py</strong> 
