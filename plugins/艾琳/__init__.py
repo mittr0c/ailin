@@ -6,10 +6,8 @@ from nonebot.adapters.onebot.v11 import MessageSegment   #发图片用的
 
 from plugins.fun import *
 
-import random
+import random,json,os,re,requests,jieba
 import datetime,time
-import json,re
-import requests
 
 #测试
 测试超管 = on_command("测试超管", permission=SUPERUSER)
@@ -29,6 +27,7 @@ qq = on_command("qq")
 金币 = on_command("金币",aliases={"背包", "查看金币","查询","金币查询","查看背包"})
 抽奖 = on_command("抽奖")
 挖矿 = on_command("挖矿",aliases={"淘金","群里淘金","沙里淘金"})
+jieba1 = on_command("jieba",aliases={"结巴","拆分","拆词"})
 
 #api
 战力 = on_command("战力",aliases={"查战力", "查战区" , "战区","查看战力","查看战区"})
@@ -49,25 +48,30 @@ AI对联 = on_command("AI对联",aliases={"ai对联"})
 
 @猜英雄.handle()
 async def _(event: GroupMessageEvent):
-    qq_id = str(event.user_id)  # 获取qq号
-    新用户(qq_id)
+    qq_id = event.user_id   # 获取群号
     当前金币 = 查金币(qq_id)
-    if 当前金币 < 3:
-        await 猜英雄.send("需花费3金币，发送“签到”或“群里淘金”获得金币")
-    elif str(event.message) == '猜英雄':
-        结果 = requests.get(f'https://xiaoapi.cn/API/game_cyx.php?id={qq_id}&msg=开始游戏')
-        结果 = str(结果.content)
-        await 猜英雄.send(f'{结果}\r发“猜英雄 英雄名”')
+    if 当前金币 < 1:
+        await 猜英雄.send("需花费1金币，发送“签到”或“群里淘金”获得金币")
     else:
-        减金币(qq_id,3)
-        值 = str(event.message).split(maxsplit=1)[1]  #返回空格之后的内容
-        结果 = requests.get(f'https://xiaoapi.cn/API/game_cyx.php?id={qq_id}&msg=答{值}')
-        await 猜英雄.send(结果.content)
+        减金币(qq_id,1)
+        group_id = event.group_id   # 获取群号
+        if str(event.message) == '猜英雄':
+            结果 = requests.get(f'https://xiaoapi.cn/API/game_cyx.php?id={group_id}&msg=开始游戏')
+            await 猜英雄.send('发“猜英雄 英雄名”进行回答')
+        else:
+            值 = str(event.message).split(maxsplit=1)[1]  #返回空格之后的内容
+            结果 = requests.get(f'https://xiaoapi.cn/API/game_cyx.php?id={group_id}&msg=答{值}')
+        结果 = bytes(结果.content)
+        结果 = 结果.decode('utf-8')
+        结果 = str(结果).split('。')  #返回空格之后的内容
+        for guess in range (0,10):
+            消息 = 结果[guess]
+            await 猜英雄.send(消息)
+        await 猜英雄.send(消息)
 
 @查皮肤.handle()
 async def _(event: GroupMessageEvent):
     qq_id = str(event.user_id)  # 获取qq号
-    新用户(qq_id)
     当前金币 = 查金币(qq_id)
     if 当前金币 < 1:
         await 查皮肤.send("查询需花费1金币，发送“签到”或“群里淘金”获得金币")
@@ -87,7 +91,6 @@ async def _(event: GroupMessageEvent):
 @查出装.handle()
 async def _(event: GroupMessageEvent):
     qq_id = str(event.user_id)  # 获取qq号
-    新用户(qq_id)
     当前金币 = 查金币(qq_id)
     if 当前金币 < 3:
         await 查皮肤.send("查询需花费3金币，发送“签到”或“群里淘金”获得金币")
@@ -102,7 +105,6 @@ async def _(event: GroupMessageEvent):
 @战力.handle()
 async def _(event: GroupMessageEvent):
     qq_id = str(event.user_id)  # 获取qq号
-    新用户(qq_id)
     当前金币 = 查金币(qq_id)
     if 当前金币 < 5:
         await 战力.send("查询需花费5金币，发送“签到”或“群里淘金”获得金币")
@@ -130,14 +132,13 @@ async def _(event: GroupMessageEvent):
 @百科.handle()
 async def _(event: GroupMessageEvent):
     qq_id = str(event.user_id)  # 获取qq号
-    新用户(qq_id)
     当前金币 = 查金币(qq_id)
-    if 当前金币 < 2:
-        await 战力.send("查询需花费2金币，发送“签到”或“群里淘金”获得金币")
+    if 当前金币 < 10:
+        await 战力.send("查询需花费10金币，发送“签到”或“群里淘金”获得金币")
     elif str(event.message) == '天气' or str(event.message) == '查天气':
         await 查皮肤.send("发送“天气 城市名”进行查询，注意空一格")
     else:
-        减金币(qq_id,2)
+        减金币(qq_id,10)
         值 = str(event.message).split(maxsplit=1)[1]  #返回空格之后的内容
         结果 = requests.get(f'https://xiaoapi.cn/API/bk.php?m=json&type=bd&msg={值}')
         结果 = json.loads(结果.content)
@@ -149,7 +150,6 @@ async def _(event: GroupMessageEvent):
 @天气.handle()
 async def _(event: GroupMessageEvent):
     qq_id = str(event.user_id)  # 获取qq号
-    新用户(qq_id)
     当前金币 = 查金币(qq_id)
     if 当前金币 < 2:
         await 战力.send("查询需花费2金币，发送“签到”或“群里淘金”获得金币")
@@ -169,7 +169,6 @@ async def _(event: GroupMessageEvent):
 @一言.handle()
 async def _(event: GroupMessageEvent):
     qq_id = str(event.user_id)  # 获取qq号
-    新用户(qq_id)
     当前金币 = 查金币(qq_id)
     if 当前金币 < 1:
         await 战力.send("一言需花费1金币，发送“签到”或“群里淘金”获得金币")
@@ -186,12 +185,30 @@ async def _():
     图 = r'file:///C:\\Users\\86156\\Desktop\\bot\\ailin\\menu.png'
     await 菜单.send(MessageSegment.image(图))
 
+@jieba1.handle()
+async def _(event: GroupMessageEvent):
+    qq_id = str(event.user_id)  # 获取签到人qq号
+    当前金币 = 查金币(qq_id)
+    if 当前金币 < 1:
+        await 抽奖.send("需要花费1金币，发“签到”或“群里淘金”获得金币")
+    else:
+        减金币(qq_id,1)
+        text = str(event.message).split(maxsplit=1)[1]  #返回空格之后的内容
+        cut = jieba.lcut(text)
+        mes = ''
+        for words in cut:
+            mes = mes + ',' + words
+        await jieba1.send(mes)
+
 @签到.handle()
 async def _(event: GroupMessageEvent):
     qq_id = str(event.user_id)  # 获取签到人qq号
     当前日期 = time.strftime('%Y-%m-%d', time.localtime(time.time()))
-    新用户(qq_id)
-    with open(f'data/艾琳/用户/{qq_id}/信息.json', 'r+', encoding='utf-8')as f:  #获取签到人信息
+    if not os.path.exists(f'data/艾琳/用户/{qq_id}.json'):
+        with open(f'data/艾琳/用户/{qq_id}.json', 'w+', encoding='utf-8')as f:
+            dic = {"coin": 0, "checkdate": '5'}
+            json.dump(dic, f)  # 写入数据
+    with open(f'data/艾琳/用户/{qq_id}.json', 'r+', encoding='utf-8')as f:  #获取签到人信息
         dic = json.load(f)
         签到日期 = dic['checkdate']
         if 签到日期 == 当前日期:
@@ -210,8 +227,7 @@ async def _(event: GroupMessageEvent):
 @金币.handle()
 async def _(event: GroupMessageEvent):
     qq_id = str(event.user_id)  # 获取签到人qq号
-    新用户(qq_id)
-    if str(event.message) == '金币' or str(event.message) == '背包'  or str(event.message) == '查金币':
+    if str(event.message) == '金币' or str(event.message) == '金币查询'  or str(event.message) == '查金币':
         await 金币.send(f"当前金币：{查金币(qq_id)}")
     else:
         qq_id = str(event.message).split(maxsplit=1)[1]  #返回空格之后的内容
@@ -220,7 +236,6 @@ async def _(event: GroupMessageEvent):
 @抽奖.handle()
 async def _(event: GroupMessageEvent):
     qq_id = str(event.user_id)  # 获取签到人qq号
-    新用户(qq_id)
     当前金币 = 查金币(qq_id)
     if 当前金币 < 80:
         await 抽奖.send("低于80金币不得抽奖，发“签到”或“群里淘金”获得金币")
@@ -242,13 +257,11 @@ async def _(event: GroupMessageEvent):
 async def _(bot:Bot,event: GroupMessageEvent):
     qq_id = str(event.user_id)  # 获取qq号
     group_id = event.group_id   # 获取群号
-    新用户(qq_id)
     群人数 = (await bot.get_group_info(group_id=group_id))["member_count"]
     if 群人数 < 100 and group_id != 758643551 and group_id != 468586270 and group_id != 223296112:
         await 挖矿.send(f"此群人数较少，暂不支持淘金，发送“功能”查看更多功能")
     else:
-        新群(group_id)
-        with open(f'data/艾琳/群/{group_id}/信息.json', 'r+', encoding='utf-8')as f:
+        with open(f'data/艾琳/群/{group_id}.json', 'r+', encoding='utf-8')as f:
             dic = json.load(f)
             挖矿人数 = dic['MiningTimes']
             挖矿人数 += 1
@@ -330,7 +343,7 @@ async def _(event: GroupMessageEvent):
 @开发人员.handle()
 async def _():
     await 开发人员.send("机器人名称：艾琳\r"
-                    "当前版本：v1.0.6\r"
+                    "当前版本：v1.2.0\r"
                     "开发者：3142331296")
     await 开发人员.send("开发语言：Python\r"
                     "开发框架：Nonebot2\r"
