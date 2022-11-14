@@ -82,4 +82,12 @@ python bot.py
 
 部署或配置若有疑问，参见[NoneBot2文档](https://v2.nonebot.dev/)、[go-cqhttp帮助中心](https://docs.go-cqhttp.org/)
 
+### 丨更新日志
 
+##### v1.0.4
+
+修复bug
+
+##### v1.0.6
+
+光遇每日任务查询
