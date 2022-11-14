@@ -22,7 +22,7 @@ qq = on_command("qq")
 
 #目录
 菜单 = on_command("菜单",aliases={"功能", "帮助" ,"主菜单" ,"目录" , "@艾琳"})
-开发人员 = on_command("开发人员",aliases={"关于"})
+开发人员 = on_command("开发人员",aliases={"关于", "开发者"})
 
 #常用功能
 签到 = on_command("签到",aliases={"打卡", "冒泡"})
@@ -330,7 +330,7 @@ async def _(event: GroupMessageEvent):
 @开发人员.handle()
 async def _():
     await 开发人员.send("机器人名称：艾琳\r"
-                    "当前版本：v1.0.4\r"
+                    "当前版本：v1.0.6\r"
                     "开发者：3142331296")
     await 开发人员.send("开发语言：Python\r"
                     "开发框架：Nonebot2\r"
