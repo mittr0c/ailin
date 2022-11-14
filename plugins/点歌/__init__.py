@@ -10,6 +10,7 @@ from nonebot.plugin import PluginMetadata
 from nonebot.adapters.onebot.v11 import Message
 
 from .data_source import Func, Source, sources
+from plugins.fun import *
 
 __plugin_meta__ = PluginMetadata(
     name="点歌",
@@ -41,20 +42,25 @@ def retry(func: Func, count=3, sleep=3):
 def create_matchers():
     def create_handler(source: Source) -> T_Handler:
         async def handler(matcher: Matcher, msg: Message = CommandArg()):
-            keyword = msg.extract_plain_text().strip()
-            if not keyword:
-                matcher.block = False
-                await matcher.finish()
+            qq_id = event.user_id
+            if 查金币(qq_id) < 10:
+                await 点歌.send("点歌需花费10币，发送“签到”或“群里淘金”获得金币")
+            else:
+                减金币(qq_id, 10)
+                keyword = msg.extract_plain_text().strip()
+                if not keyword:
+                    matcher.block = False
+                    await matcher.finish()
 
-            res = None
-            try:
-                res = await retry(source.func)(keyword)
-                if not res:
-                    res = f"{source.name}中找不到相关的歌曲"
-            except Exception:
-                logger.warning(traceback.format_exc())
-                res = "出错了，请稍后再试"
-            await matcher.finish(res)
+                res = None
+                try:
+                    res = await retry(source.func)(keyword)
+                    if not res:
+                        res = f"{source.name}中找不到相关的歌曲"
+                except Exception:
+                    logger.warning(traceback.format_exc())
+                    res = "出错了，请稍后再试"
+                await matcher.finish(res)
 
         return handler
 
@@ -68,21 +74,26 @@ create_matchers()
 
 
 async def handler(matcher: Matcher, msg: Message = CommandArg()):
-    keyword = msg.extract_plain_text().strip()
-    if not keyword:
-        matcher.block = False
-        await matcher.finish()
+    qq_id = event.user_id
+    if 查金币(qq_id) < 10:
+        await 点歌.send("点歌需花费10金币，发送“签到”或“群里淘金”获得金币")
+    else:
+        减金币(qq_id, 10)
+        keyword = msg.extract_plain_text().strip()
+        if not keyword:
+            matcher.block = False
+            await matcher.finish()
 
-    res = None
-    for source in sources:
-        try:
-            res = await source.func(keyword)
-        except:
-            pass
-        if res:
-            await matcher.finish(res)
-    if not res:
-        await matcher.finish("找不到相关的歌曲")
+        res = None
+        for source in sources:
+            try:
+                res = await source.func(keyword)
+            except:
+                pass
+            if res:
+                await matcher.finish(res)
+        if not res:
+            await matcher.finish("找不到相关的歌曲")
 
 
 on_command("点歌", block=True, priority=12).append_handler(handler)
