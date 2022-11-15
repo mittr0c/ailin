@@ -2,7 +2,7 @@
   <a href="https://github.com/CMHopeSunshine/LittlePaimon/tree/nonebot2"><img src="http://q.qlogo.cn/headimg_dl?dst_uin=1279605045&spec=640&img_type=jpg" width="256" height="256" alt="LittlePaimon"></a>
 </p>
 <h1 align="center">艾琳 | Irene</h1>
-<h3 align="center">QQ聊天机器人 | 王者荣耀查询</h3>
+<h3 align="center">QQ聊天机器人</h3>
 <h4 align="center">基于<a href="https://github.com/nonebot/nonebot2" target="_blank">NoneBot2</a>和<a href="https://github.com/Mrs4s/go-cqhttp" target="_blank">go-cqhttp</a></h4>
 
 <p align="center">
@@ -10,7 +10,7 @@
     <img src="https://img.shields.io/badge/python-3.8+-blue" alt="python">
     <img src="https://img.shields.io/badge/nonebot-2.0.0-green">
     <img src="https://img.shields.io/badge/go--cqhttp-1.0.0-yellow">
-    <img src="https://img.shields.io/badge/版本号-1.1.3-red" alt="version">
+    <img src="https://img.shields.io/badge/版本号-1.1.4Beta-red" alt="version">
     <a href="https://jq.qq.com/?_wv=1027&k=CXHuHAmp"><img src="https://img.shields.io/badge/加入-测试群-pink"alt="QQ guild"></a>
 </p>
 
@@ -86,7 +86,7 @@ python bot.py
 
 ## 丨更新日志
 
-### v1.1.3
+#### v1.1.3
 
 新功能：金币排名、荣誉称号
 
