@@ -10,7 +10,7 @@
     <img src="https://img.shields.io/badge/python-3.8+-blue" alt="python">
     <img src="https://img.shields.io/badge/nonebot-2.0.0-green">
     <img src="https://img.shields.io/badge/go--cqhttp-1.0.0-yellow">
-    <img src="https://img.shields.io/badge/版本号-1.1.1Beta-red" alt="version">
+    <img src="https://img.shields.io/badge/版本号-1.1.3-red" alt="version">
     <a href="https://jq.qq.com/?_wv=1027&k=CXHuHAmp"><img src="https://img.shields.io/badge/加入-测试群-pink"alt="QQ guild"></a>
 </p>
 
@@ -25,7 +25,7 @@
 #### | 艾琳bot `菜单` `功能` `帮助` `目录`
 - [ ] 常规类
 - - [x] <strong>签到</strong>  `签到` `打卡` `冒泡`
-- - [x] <strong>金币查询</strong> `金币` `金币 qq号`
+- - [x] <strong>金币查询</strong> `金币` `金币 qq号` `排名` 
 - [ ] 查询类
 - - [x] <strong>查战力</strong> `查战力 英雄名`
 - - [x] <strong>查出装</strong> `查出装 英雄名`
@@ -86,20 +86,24 @@ python bot.py
 
 ## 丨更新日志
 
-### v1.1.0
+### v1.1.3
+
+新功能：金币排名、荣誉称号
+
+优化了部分代码
+
+#### v1.1.0
 
 对存档地址进行了优化；相应地，对各插件的代码进行了优化
 
-如果你之前使用了v1.1.0以前版本的艾琳，请务必先运行./data目录下的 <strong>用户存档路径变更.py</strong> 和 <strong>群存档路径变更.py</strong> ，运行一遍后你可以删除 ./data/用户 和 ./data/群 中的所有子文件夹，并可以删除 <strong>用户存档路径变更.py</strong> 和 <strong>群存档路径变更.py</strong> 
+#### v1.0.7 Beta
 
-### v1.0.7 Beta
+新功能：jieba
 
-新增功能：jieba
+#### v1.0.6
 
-### v1.0.6
+新功能：光遇今日攻略
 
-新增功能：光遇今日攻略
-
-### v1.0.4
+#### v1.0.4
 
 修复bug
