@@ -25,10 +25,10 @@ qq1 = on_command("qq")
 开发人员1 = on_command("开发人员",aliases={"关于", "开发者"})
 
 #常用功能
-签到1 = on_command("签到",aliases={"打卡", "冒泡"})
-金币1 = on_command("金币",aliases={"背包", "查看金币","查询","金币查询","查看背包","我的金币","获得金币"})
+签到1 = on_command("签到",aliases={"打卡", "冒泡","获得金币"})
+金币1 = on_command("金币",aliases={"背包", "查看金币","查询","金币查询","查看背包","我的金币"})
 抽奖1 = on_command("抽奖")
-挖矿1 = on_command("挖矿",aliases={"淘金","群里淘金","沙里淘金"})
+挖矿1 = on_command("挖矿",aliases={"淘金","群里淘金","沙里淘金","获得金币"})
 jieba1 = on_command("jieba",aliases={"结巴","拆分","拆词"})
 金币排名1 = on_command("金币排名",aliases={"排名","排行榜","金币排行"})
 全排名1 = on_command("全排名",aliases={"全部排名","全部排行榜","全部排行"}, permission=SUPERUSER)
@@ -51,7 +51,7 @@ AI对联1 = on_command("AI对联",aliases={"ai对联"})
 
 @猜英雄1.handle()
 async def _(event: GroupMessageEvent):
-    qq_id = event.user_id   # 获取群号
+    qq_id = event.user_id
     当前金币 = 查金币(qq_id)
     if 当前金币 < 1:
         await 猜英雄.send("需花费1金币，发送“签到”或“群里淘金”获得金币")
@@ -231,10 +231,10 @@ async def _(event: GroupMessageEvent):
 async def _(event: GroupMessageEvent):
     qq_id = str(event.user_id)  # 获取签到人qq号
     if str(event.message) == '金币' or str(event.message) == '金币查询'  or str(event.message) == '查金币':
-        await 金币1.send(f"用户：{qq_id}\r金币：{查金币(qq_id)}\r称号：{查称号(qq_id)}\r“签到”或“淘金”获得金币")
+        await 金币1.send(f"用户：{qq_id}\r金币：{查金币(qq_id)}\r称号：{查称号(qq_id)}")
     else:
         qq_id = str(event.message).split(maxsplit=1)[1]  #返回空格之后的内容
-        await 金币1.send(f"用户：{qq_id}\r金币：{查金币(qq_id)}\r称号：{查称号(qq_id)}\r“签到”或“淘金”获得金币")
+        await 金币1.send(f"用户：{qq_id}\r金币：{查金币(qq_id)}\r称号：{查称号(qq_id)}")
 
 @抽奖1.handle()
 async def _(event: GroupMessageEvent):
@@ -361,6 +361,7 @@ async def _(event: GroupMessageEvent):
 
 @金币排名1.handle()
 async def _(event: GroupMessageEvent):
+    发称号()
     rank1 = rank123()
     await 金币排名1.send(str(rank1))
     await 金币排名1.send(查上榜金币())
@@ -376,7 +377,7 @@ async def _(event: GroupMessageEvent):
 @开发人员1.handle()
 async def _():
     await 开发人员1.send("机器人名称：艾琳\r"
-                    "当前版本：v1.1.3\r"
+                    "当前版本：v1.2.1\r"
                     "开发者：3142331296")
     await 开发人员1.send("开发语言：Python\r"
                     "开发框架：Nonebot2\r"
