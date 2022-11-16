@@ -11,8 +11,8 @@ import jieba
 
 debug = False
 
-embed_size = 16         #128
-hidden_size = 32         #1024
+embed_size = 128         
+hidden_size = 1024         
 lr = 0.001
 lstm_layers = 2
 batch_size = 32
