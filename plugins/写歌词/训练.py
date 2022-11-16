@@ -30,7 +30,7 @@ if debug:
 
 
 class LyricsDataset(Dataset):
-    def __init__(self, seq_len, file="data/lyrics.txt"):
+    def __init__(self, seq_len, file=".../data/lyrics.txt"):
         SOS = 0  # start of song
         EOS = 1  # end of song
 
