@@ -1,4 +1,4 @@
-import json,requests,os
+import json,requests,os,random
 
 '''一些基本定义'''
 
@@ -47,7 +47,7 @@ def 查称号(qq_id):
     with open(f'data/艾琳/用户/{qq_id}.json', 'r+', encoding='utf-8')as f:
         dic = json.load(f)
         hn = dic['honor']
-        hdic = {0:'默默无闻',1:'国服百强',2:'国服五十强',3:'国服十强',4:'国服最强'}
+        hdic = {0:'默默无闻',1:'国服百强',2:'国服五十强',3:'国服十强',4:'国服殿军',5:'国服季军',6:'国服亚军',7:'国服冠军'}
         result = hdic[hn]
         return(result)
 
@@ -109,9 +109,21 @@ def 发称号():
     list = sorted(list, key=lambda x: x['coin'], reverse=True)
     top = list[0]
     qqid = str(top['qq']).split('.json')[0]  # 返回.json之前的内容
-    改称号(qqid,4)   #国服最强
-    hdic = {'默默无闻':0,'国服百强':1,'国服五十强':2,'国服十强':3,'国服最强':4}
-    for num in range (1,9):
+    改称号(qqid,7)   #国服冠军
+    top = list[1]
+    qqid = str(top['qq']).split('.json')[0]  # 返回.json之前的内容
+    hdic = {'默默无闻':0,'国服百强':1,'国服五十强':2,'国服十强':3,'国服殿军':4 ,'国服季军':5,'国服亚军':6,'国服冠军':7}
+    if hdic[查称号(qqid)] < 6:
+        改称号(qqid,6)   #国服亚军
+    top = list[2]
+    qqid = str(top['qq']).split('.json')[0]  # 返回.json之前的内容
+    if hdic[查称号(qqid)] < 5:
+        改称号(qqid,5)   #国服季军
+    top = list[3]
+    qqid = str(top['qq']).split('.json')[0]  # 返回.json之前的内容
+    if hdic[查称号(qqid)] < 4:
+        改称号(qqid,4)   #国服殿军
+    for num in range (4,9):
         ten = list[num]
         qqid = str(ten['qq']).split('.json')[0]  #返回.json之前的内容
         if hdic[查称号(qqid)] < 3:
@@ -148,6 +160,12 @@ def 查上榜金币():
     result = f'国服最强：{top_coin}金币\r国服十强：{ten_coin}金币\r国服五十强：{fif_coin}金币\r国服百强：{hund_coin}金币'
     return (result)
 
+def 随机群():
+    file = os.listdir('data/艾琳/群')
+    group = random.choice(file)
+    group = str(group).split('.json')[0]
+    return group
+
 def 取英雄号(name):
     with open('wzry/英雄词典.json', 'r', encoding='utf-8')as f:
         dic = json.load(f)
@@ -173,5 +191,3 @@ def 生成英雄词典():
         英雄词典[英雄名] = 英雄代码
     with open('wzry/英雄词典.json', 'w+', encoding='utf-8')as f:
         json.dump(英雄词典, f)
-
-
