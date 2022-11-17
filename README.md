@@ -38,7 +38,6 @@
 - - [x] <strong>查百科</strong> `百科 xxx`
 - [ ] 娱乐类
 - - [x] <strong>获得金币</strong> `淘金` `抽奖`
-- - [x] <strong>Jieba</strong> `jieba xxx` `拆词 xxx`
 - - [x] <strong>点歌台</strong> `点歌台` `点歌 xxx`
 - - [x] <strong>漂流瓶</strong> `扔漂流瓶 xxx` `捡漂流瓶`
 - - [x] <strong>猜英雄</strong> `猜英雄` `猜英雄 英雄名`
@@ -90,11 +89,11 @@ python bot.py
 
 ### v1.2.1
 
-新功能：AI写歌词，利用RNN循环神经网络训练的语言模型
+新功能：AI写歌词，用RNN循环网络训练的模型
 
-weights目录下有一个我训练好的模型，我的embed size是128，hidden size是1024，batch size是32，训练了一轮，用的显卡是英伟达RTX3080，训练用时10个小时左右。
+你可以下载[我训练好的模型](https://pan.baidu.com/s/1wOaaf_927tp-MJrLWf3rLA)放入weights文件夹内， 提取码: ilin
 
-你也可以准备好歌词放入data目录，运行 <strong>训练.py</strong> ，根据提示自己训练一个模型
+你也可以下载[AI写歌词](https://github.com/mittr0c/ai-lyrics-writing)，用它训练一个模型
 
 #### v1.1.3
 
