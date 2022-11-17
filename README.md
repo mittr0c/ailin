@@ -1,5 +1,5 @@
 <p align="center" >
-  <a href="https://github.com/CMHopeSunshine/LittlePaimon/tree/nonebot2"><img src="http://q.qlogo.cn/headimg_dl?dst_uin=1279605045&spec=640&img_type=jpg" width="256" height="256" alt="LittlePaimon"></a>
+  <img src="http://q.qlogo.cn/headimg_dl?dst_uin=1279605045&spec=640&img_type=jpg" width="256" height="256" alt="ailin"></a>
 </p>
 <h1 align="center">艾琳 | Irene</h1>
 <h3 align="center">人工智能QQ聊天机器人</h3>
@@ -104,10 +104,6 @@ python bot.py
 #### v1.1.0
 
 对存档地址进行了优化；相应地，对各插件的代码进行了优化
-
-#### v1.0.7 Beta
-
-新功能：jieba
 
 #### v1.0.6
 
