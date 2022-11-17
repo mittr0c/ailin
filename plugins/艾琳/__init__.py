@@ -14,11 +14,13 @@ import datetime,time
 测试1 = on_command("测试", permission=SUPERUSER)
 测试权限1 = on_command("测试权限")
 时间1 = on_command("时间",aliases={"当前时间"})
-qq1 = on_command("qq")
 加金币1 = on_command("加金币", permission=SUPERUSER)
 减金币1 = on_command("减金币", permission=SUPERUSER)
 改称号1 = on_command("改称号", permission=SUPERUSER)
 发称号1 = on_command("发称号", permission=SUPERUSER)
+随机群1 = on_command("随机群", permission=SUPERUSER)
+jieba1 = on_command("jieba",aliases={"结巴","拆分","拆词"}, permission=SUPERUSER)
+全排名1 = on_command("全排名",aliases={"全部排名","全部排行榜","全部排行"}, permission=SUPERUSER)
 
 #目录
 菜单1 = on_command("菜单",aliases={"功能", "帮助" ,"主菜单" ,"目录" , "@艾琳"})
@@ -29,9 +31,8 @@ qq1 = on_command("qq")
 金币1 = on_command("金币",aliases={"背包", "查看金币","查询","金币查询","查看背包","我的金币"})
 抽奖1 = on_command("抽奖")
 挖矿1 = on_command("挖矿",aliases={"淘金","群里淘金","沙里淘金","获得金币"})
-jieba1 = on_command("jieba",aliases={"结巴","拆分","拆词"})
+大喇叭 = on_command("大喇叭",aliases={"喊话"})
 金币排名1 = on_command("金币排名",aliases={"排名","排行榜","金币排行"})
-全排名1 = on_command("全排名",aliases={"全部排名","全部排行榜","全部排行"}, permission=SUPERUSER)
 
 #api
 战力1 = on_command("战力",aliases={"查战力", "查战区" , "战区","查看战力","查看战区"})
@@ -130,7 +131,7 @@ async def _(event: GroupMessageEvent):
             #小国标 = 结果['guobiao']
             更新时间 = 结果['updatetime']
             平台名 = 平台词典[平台]
-            await 战力1.send(f"【{值}】{平台名}\r区标：{区}（战力{区战力}）\r市标：{市}（战力{市战力}）\r省标：{省}（战力{省战力}）\r时间：{更新时间}")
+            await 战力1.send(f"{平台名}\r区标：{区}（战力{区战力}）\r市标：{市}（战力{市战力}）\r省标：{省}（战力{省战力}）\r时间：{更新时间}")
 
 @百科1.handle()
 async def _(event: GroupMessageEvent):
@@ -230,7 +231,7 @@ async def _(event: GroupMessageEvent):
 @金币1.handle()
 async def _(event: GroupMessageEvent):
     qq_id = str(event.user_id)  # 获取签到人qq号
-    if str(event.message) == '金币' or str(event.message) == '金币查询'  or str(event.message) == '查金币':
+    if str(event.message) == '金币' or str(event.message) == '金币查询' or str(event.message) == '查金币' or str(event.message) == '查询':
         await 金币1.send(f"用户：{qq_id}\r金币：{查金币(qq_id)}\r称号：{查称号(qq_id)}")
     else:
         qq_id = str(event.message).split(maxsplit=1)[1]  #返回空格之后的内容
@@ -303,6 +304,10 @@ async def _():
 
 '''测试类'''
 
+@随机群1.handle()
+async def _(event: GroupMessageEvent):
+    await 发称号1.send(随机群())
+
 @发称号1.handle()
 async def _(event: GroupMessageEvent):
     发称号()
@@ -353,11 +358,6 @@ async def _(bot: Bot, event: GroupMessageEvent):
 async def _():
     当前时间 = str(datetime.datetime.now())
     await 时间1.send(f"当前时间：{当前时间}")
-
-@qq1.handle()
-async def _(event: GroupMessageEvent):
-    qq_id = str(event.user_id)  # qq号
-    await qq1.send(f"当前qq：{qq_id}")
 
 @金币排名1.handle()
 async def _(event: GroupMessageEvent):
