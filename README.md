@@ -2,7 +2,7 @@
   <a href="https://github.com/CMHopeSunshine/LittlePaimon/tree/nonebot2"><img src="http://q.qlogo.cn/headimg_dl?dst_uin=1279605045&spec=640&img_type=jpg" width="256" height="256" alt="LittlePaimon"></a>
 </p>
 <h1 align="center">艾琳 | Irene</h1>
-<h3 align="center">QQ聊天机器人 | 王者荣耀查询</h3>
+<h3 align="center">人工智能QQ聊天机器人</h3>
 <h4 align="center">基于<a href="https://github.com/nonebot/nonebot2" target="_blank">NoneBot2</a>和<a href="https://github.com/Mrs4s/go-cqhttp" target="_blank">go-cqhttp</a></h4>
 
 <p align="center">
@@ -16,7 +16,9 @@
 
 ## 丨简介
 
-艾琳，群聊天互动机器人，实现查战力、查出装、查皮肤、光遇每日任务等功能，并设置了金币查询机制，用户花金币进行查询，通过签到、群里淘金、小游戏等方式获取金币。所有用户数据储存在本地文件夹。
+艾琳，QQ聊天机器人，能进行AI写歌词、AI对联，能查战力、查出装、查皮肤、光遇每日任务等。并编写了几个小游戏。所有用户数据储存在本地文件夹。
+
+AI写歌词是用RNN循环网络训练了一个模型，你可以下载[我训练好的模型](https://pan.baidu.com/s/1wOaaf_927tp-MJrLWf3rLA)放入weights文件夹内， 提取码: ilin；你也可以下载[AI写歌词](https://github.com/mittr0c/ai-lyrics-writing)，用它训练一个模型
 
 持续更新中。如有问题或建议/意见，可以发送issues或加入<strong>[艾琳bot测试群](https://jq.qq.com/?_wv=1027&k=ExnAAm1V) </strong>
 
@@ -27,8 +29,8 @@
 - - [x] <strong>签到</strong>  `签到` `打卡` `冒泡`
 - - [x] <strong>金币查询</strong> `金币` `金币 qq号` `排名` 
 - [ ] 人工智能
-- - [x] <strong>AI对联</strong> `对联` `对联 xxx 5`
 - - [x] <strong>AI写歌词</strong> `写歌词` `歌词 xxx`
+- - [x] <strong>AI对联</strong> `对联` `对联 xxx 5`
 - [ ] 查询类
 - - [x] <strong>查战力</strong> `查战力 英雄名`
 - - [x] <strong>查出装</strong> `查出装 英雄名`
@@ -89,11 +91,9 @@ python bot.py
 
 ### v1.2.1
 
-新功能：AI写歌词，用RNN循环网络训练的模型
+新功能：AI写歌词
 
-你可以下载[我训练好的模型](https://pan.baidu.com/s/1wOaaf_927tp-MJrLWf3rLA)放入weights文件夹内， 提取码: ilin
-
-你也可以下载[AI写歌词](https://github.com/mittr0c/ai-lyrics-writing)，用它训练一个模型
+修复bug
 
 #### v1.1.3
 
