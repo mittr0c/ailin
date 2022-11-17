@@ -11,11 +11,11 @@ import jieba
 
 debug = False
 
-embed_size = 128         
-hidden_size = 1024         
+embed_size = 128         #128
+hidden_size = 1024        #1024
 lr = 0.001
 lstm_layers = 2
-batch_size = 32
+batch_size = 2
 epochs = 15
 seq_len = 48
 
