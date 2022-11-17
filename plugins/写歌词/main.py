@@ -15,7 +15,7 @@ embed_size = 128         #128
 hidden_size = 1024         #1024
 lr = 0.001
 lstm_layers = 2
-batch_size = 32
+batch_size = 2
 epochs = 15
 seq_len = 48
 
@@ -157,17 +157,6 @@ def xiegeci(message):
         test_loader = [next(iter(test_loader))]
 
     # Sanity check: view training data
-    if False:
-        i = 0
-        for data in train_loader:
-            if i >= 10:
-                break
-            input_batch, _ = data
-            first_sample = input_batch[0]
-
-            pprint("".join([dataset.index2word[x.item()] for x in first_sample]))
-            i += 1
-
     # Create NN model
     vocab_size = len(dataset.word2index)
     model = LyricsNet(
@@ -180,10 +169,9 @@ def xiegeci(message):
 
     # Create optimizer
     optimizer = optim.Adam(model.parameters(), lr=lr)
-    # optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
 
     # Load checkpoint
-    checkpoint_files = glob.glob("checkpoint-*.pth")
+    checkpoint_files = glob.glob("weights/checkpoint-*.pth")
 
     load_checkpoint(checkpoint_files[-1])
 
