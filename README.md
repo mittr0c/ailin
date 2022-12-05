@@ -1,5 +1,5 @@
 <p align="center" >
-  <img src="http://q.qlogo.cn/headimg_dl?dst_uin=1279605045&spec=640&img_type=jpg" width="256" height="256" alt="ailin"></a>
+  <img src="http://q.qlogo.cn/headimg_dl?dst_uin=1279605045&spec=640&img_type=jpg" width="256" height="256" alt="ailin">
 </p>
 <h1 align="center">艾琳 | Irene</h1>
 <h3 align="center">人工智能QQ聊天机器人</h3>
@@ -10,15 +10,15 @@
     <img src="https://img.shields.io/badge/python-3.8+-blue" alt="python">
     <img src="https://img.shields.io/badge/nonebot-2.0.0-green">
     <img src="https://img.shields.io/badge/go--cqhttp-1.0.0-yellow">
-    <img src="https://img.shields.io/badge/版本号-1.2.1-red" alt="version">
+    <img src="https://img.shields.io/badge/版本号-1.3.0-red" alt="version">
     <a href="https://jq.qq.com/?_wv=1027&k=CXHuHAmp"><img src="https://img.shields.io/badge/加入-测试群-pink"alt="QQ guild"></a>
 </p>
 
 ## 丨简介
 
-艾琳，QQ聊天机器人，能进行AI写歌词、AI对联，能查战力、查出装、查皮肤、光遇每日任务等。并编写了几个小游戏。所有用户数据储存在本地文件夹。
+艾琳，QQ聊天机器人，能进行AI写歌词、AI对联，查战力、查出装、查皮肤、光遇每日任务等。写了几个小游戏。所有用户数据储存在本地文件夹。
 
-AI写歌词是用RNN循环网络训练了一个模型，你可以下载[我训练好的模型](https://pan.baidu.com/s/1wOaaf_927tp-MJrLWf3rLA)放入weights文件夹内， 提取码: ilin；你也可以下载[AI写歌词](https://github.com/mittr0c/ai-lyrics-writing)，用它训练一个模型
+用RNN循环网络训练了一个AI写歌词的模型，你可以下载[我训练好的模型](https://pan.baidu.com/s/1wQ_K2QWZQ3oKtAK4rMiz5g)放入weights文件夹里， 提取码: 1234；你也可以下载[AI写歌词](https://github.com/mittr0c/ai-lyrics-writing)，自己训练一个模型
 
 持续更新中。如有问题或建议/意见，可以发送issues或加入<strong>[艾琳bot测试群](https://jq.qq.com/?_wv=1027&k=ExnAAm1V) </strong>
 
@@ -28,6 +28,7 @@ AI写歌词是用RNN循环网络训练了一个模型，你可以下载[我训�
 - [ ] 常规类
 - - [x] <strong>签到</strong>  `签到` `打卡` `冒泡`
 - - [x] <strong>金币查询</strong> `金币` `金币 qq号` `排名` 
+- - [x] <strong>获得金币</strong> `淘金` `抽奖`
 - [ ] 人工智能
 - - [x] <strong>AI写歌词</strong> `写歌词` `歌词 xxx`
 - - [x] <strong>AI对联</strong> `对联` `对联 xxx 5`
@@ -39,7 +40,8 @@ AI写歌词是用RNN循环网络训练了一个模型，你可以下载[我训�
 - - [x] <strong>天气</strong> `天气 城市名`
 - - [x] <strong>查百科</strong> `百科 xxx`
 - [ ] 娱乐类
-- - [x] <strong>获得金币</strong> `淘金` `抽奖`
+- - [x] <strong>国际象棋</strong> `国际象棋` `chess`
+- - [x] <strong>英雄对战</strong> `抽卡` `卡包` `匹配`
 - - [x] <strong>点歌台</strong> `点歌台` `点歌 xxx`
 - - [x] <strong>漂流瓶</strong> `扔漂流瓶 xxx` `捡漂流瓶`
 - - [x] <strong>猜英雄</strong> `猜英雄` `猜英雄 英雄名`
@@ -89,17 +91,21 @@ python bot.py
 
 ## 丨更新日志
 
-### v1.2.1
+#### v1.3.0
+
+新功能：英雄对战
+
+增加了国际象棋插件、狼人杀插件，修改了插件的一些代码
+
+修复了一些bug
+
+#### v1.2.1
 
 新功能：AI写歌词
-
-修复bug
 
 #### v1.1.3
 
 新功能：金币排名、荣誉称号
-
-优化了部分代码
 
 #### v1.1.0
 
