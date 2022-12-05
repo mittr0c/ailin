@@ -19,6 +19,7 @@ import datetime,time
 改称号1 = on_command("改称号", permission=SUPERUSER)
 发称号1 = on_command("发称号", permission=SUPERUSER)
 随机群1 = on_command("随机群", permission=SUPERUSER)
+语音1 = on_command("语音", permission=SUPERUSER)
 jieba1 = on_command("jieba",aliases={"结巴","拆分","拆词"}, permission=SUPERUSER)
 全排名1 = on_command("全排名",aliases={"全部排名","全部排行榜","全部排行"}, permission=SUPERUSER)
 
@@ -55,7 +56,7 @@ async def _(event: GroupMessageEvent):
     qq_id = event.user_id
     当前金币 = 查金币(qq_id)
     if 当前金币 < 1:
-        await 猜英雄.send("需花费1金币，发送“签到”或“群里淘金”获得金币")
+        await 猜英雄1.send("需花费1金币，发送“签到”或“群里淘金”获得金币")
     else:
         减金币(qq_id,1)
         group_id = event.group_id   # 获取群号
@@ -186,8 +187,11 @@ async def _(event: GroupMessageEvent):
 
 @菜单1.handle()
 async def _():
-    图 = r'file:///C:\\Users\\86156\\Desktop\\bot\\ailin\\menu.png'
-    await 菜单1.send(MessageSegment.image(图))
+    await 菜单1.send(MessageSegment.image(r'file:///C:\\Users\\86156\\Desktop\\py\\ailin\\resource\\menu.png'))
+
+@语音1.handle()
+async def _():
+    await 语音1.send(MessageSegment.record(r'file:///C:\\Users\\86156\\Desktop\\py\\ailin\\resource\\ldjh.mp3'))
 
 @jieba1.handle()
 async def _(event: GroupMessageEvent):
@@ -208,15 +212,12 @@ async def _(event: GroupMessageEvent):
 async def _(event: GroupMessageEvent):
     qq_id = str(event.user_id)  # 获取签到人qq号
     当前日期 = time.strftime('%Y-%m-%d', time.localtime(time.time()))
-    if not os.path.exists(f'data/艾琳/用户/{qq_id}.json'):
-        with open(f'data/艾琳/用户/{qq_id}.json', 'w+', encoding='utf-8')as f:
-            dic = {'coin': 0, 'checkdate': '5', 'honor': 0}
-            json.dump(dic, f)  # 写入数据
+    查金币(qq_id)
     with open(f'data/艾琳/用户/{qq_id}.json', 'r+', encoding='utf-8')as f:  #获取签到人信息
         dic = json.load(f)
         签到日期 = dic['checkdate']
     if 签到日期 == 当前日期 and qq_id != '3142331296':
-        await 签到1.send(f"用户：{qq_id}\r金币：{查金币(qq_id)}（你今天已经签到过了）\r称号：{查称号(qq_id)}")
+        评价 = '你今天已经签到过了'
     else:
         with open(f'data/艾琳/用户/{qq_id}.json', 'r+', encoding='utf-8')as f:  # 获取签到人信息
             dic = json.load(f)
@@ -226,7 +227,12 @@ async def _(event: GroupMessageEvent):
             json.dump(dic, f)  # 写入数据
         获得金币 = random.randint(50,100)
         加金币(qq_id,获得金币)
-        await 签到1.send(f"用户：{qq_id}\r金币：{查金币(qq_id)}（+{获得金币}）\r称号：{查称号(qq_id)}")
+        评价 = f'+{获得金币}'
+    if 查chess段位(qq_id) != '棋手🏅':
+        chess段位 = '\r' + 查chess段位(qq_id)
+    else:
+        chess段位 = str()
+    await 签到1.send(f"用户：{qq_id}\r金币：{查金币(qq_id)}（{评价}）\r称号：{查称号(qq_id)}{chess段位}")
 
 @金币1.handle()
 async def _(event: GroupMessageEvent):
@@ -235,7 +241,10 @@ async def _(event: GroupMessageEvent):
         await 金币1.send(f"用户：{qq_id}\r金币：{查金币(qq_id)}\r称号：{查称号(qq_id)}")
     else:
         qq_id = str(event.message).split(maxsplit=1)[1]  #返回空格之后的内容
-        await 金币1.send(f"用户：{qq_id}\r金币：{查金币(qq_id)}\r称号：{查称号(qq_id)}")
+        if 查金币(qq_id) == 0:
+            await 金币1.send("此人还没有金币，发送“签到”或“淘金”获得金币")
+        else:
+            await 金币1.send(f"用户：{qq_id}\r金币：{查金币(qq_id)}\r称号：{查称号(qq_id)}")
 
 @抽奖1.handle()
 async def _(event: GroupMessageEvent):
@@ -277,8 +286,7 @@ async def _(bot:Bot,event: GroupMessageEvent):
             if 获得金币 < 1:
                 await 挖矿1.send(f"由于此群淘金人数太多，金币已枯竭，换其他群试试")
             elif re.search(qq_id, str(dic)):
-                await 挖矿1.send(f"你已经淘过金了，同一个群不能重复淘金，金币减1")
-                减金币(qq_id,1)
+                await 挖矿1.send(f"你已经淘过金了，同一个群不能重复淘金，邀艾琳到其他群试试")
             else:
                 加金币(qq_id,获得金币)
                 dic['MiningTimes'] = 挖矿人数
@@ -377,10 +385,8 @@ async def _(event: GroupMessageEvent):
 @开发人员1.handle()
 async def _():
     await 开发人员1.send("机器人名称：艾琳\r"
-                    "当前版本：v1.2.1\r"
-                    "开发者：3142331296")
-    await 开发人员1.send("开发语言：Python\r"
-                    "开发框架：Nonebot2\r"
-                    "执行框架：go-cqhttp\r" 
-                    "开源证书：AGPL-3.0\r" 
+                    "开发者：3142331296\r"
+                     "开发语言：Python\r"
+                     "开发框架：Nonebot2/go-cqhttp\r")
+    await 开发人员1.send("开源证书：AGPL-3.0\r" 
                     "源码：github.com/mittr0c/ailin")

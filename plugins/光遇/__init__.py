@@ -132,11 +132,15 @@ async def _(bot: Bot, event: GroupMessageEvent):
 
             #文字版：
             # results = await sky.get_data()
+            # await daily_yoli.send(results)
             # 光遇结果 = str(results).split('\n', maxsplit=39)
             #
             # for sky in range(0, 40):
             #     result = 光遇结果[sky]
             #     await daily_yoli.send(result)
+
+
+
 
             #消息转发版：
             # chain = await chain_reply(bot, results)

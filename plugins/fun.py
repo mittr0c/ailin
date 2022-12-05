@@ -3,10 +3,7 @@ import json,requests,os,random
 '''一些基本定义'''
 
 def 加金币(qq_id,num):
-    if not os.path.exists(f'data/艾琳/用户/{qq_id}.json'):
-        with open(f'data/艾琳/用户/{qq_id}.json', 'w+', encoding='utf-8')as f:
-            dic = {"coin": 0, "checkdate": '5' , 'honor':0}
-            json.dump(dic, f)  # 写入数据
+    查金币(qq_id)
     with open(f'data/艾琳/用户/{qq_id}.json', 'r+', encoding='utf-8')as f:
         dic = json.load(f)
         coin = dic['coin']
@@ -17,10 +14,7 @@ def 加金币(qq_id,num):
         json.dump(dic, f)  # 写入数据
 
 def 减金币(qq_id,num):
-    if not os.path.exists(f'data/艾琳/用户/{qq_id}.json'):
-        with open(f'data/艾琳/用户/{qq_id}.json', 'w+', encoding='utf-8')as f:
-            dic = {"coin": 0, "checkdate": '5', 'honor':0}
-            json.dump(dic, f)  # 写入数据
+    查金币(qq_id)
     with open(f'data/艾琳/用户/{qq_id}.json', 'r+', encoding='utf-8')as f:
         dic = json.load(f)
         coin = dic['coin']
@@ -33,29 +27,23 @@ def 减金币(qq_id,num):
 def 查金币(qq_id):
     if not os.path.exists(f'data/艾琳/用户/{qq_id}.json'):
         with open(f'data/艾琳/用户/{qq_id}.json', 'w+', encoding='utf-8')as f:
-            dic = {"coin": 0, "checkdate": '5', "honor": 0}
-            json.dump(dic, f)  # 写入数据
+            dic = {"coin": 0, "checkdate": '5', "honor": 0, "chess": 0}
+            json.dump(dic, f)  # 写入数据0
     with open(f'data/艾琳/用户/{qq_id}.json', 'r+', encoding='utf-8')as f:
         dic = json.load(f)
         return(dic['coin'])
 
 def 查称号(qq_id):
-    if not os.path.exists(f'data/艾琳/用户/{qq_id}.json'):
-        with open(f'data/艾琳/用户/{qq_id}.json', 'w+', encoding='utf-8')as f:
-            dic = {"coin": 0, "checkdate": '5', "honor": 0}
-            json.dump(dic, f)  # 写入数据
+    查金币(qq_id)
     with open(f'data/艾琳/用户/{qq_id}.json', 'r+', encoding='utf-8')as f:
         dic = json.load(f)
         hn = dic['honor']
-        hdic = {0:'默默无闻',1:'国服百强',2:'国服五十强',3:'国服十强',4:'国服殿军',5:'国服季军',6:'国服亚军',7:'国服冠军'}
+        hdic = {0:'默默无闻',1:'国服两百强',2:'国服百强',3:'国服五十强',4:'国服十强',5:'国服殿军',6:'国服季军',7:'国服亚军',8:'国服冠军'}
         result = hdic[hn]
         return(result)
 
 def 改称号(qq_id,num):
-    if not os.path.exists(f'data/艾琳/用户/{qq_id}.json'):
-        with open(f'data/艾琳/用户/{qq_id}.json', 'w+', encoding='utf-8')as f:
-            dic = {"coin": 0, "checkdate": '5', "honor": 0}
-            json.dump(dic, f)  # 写入数据
+    查金币(qq_id)
     with open(f'data/艾琳/用户/{qq_id}.json', 'r+', encoding='utf-8')as f:
         dic = json.load(f)
         dic['honor'] = num
@@ -109,35 +97,40 @@ def 发称号():
     list = sorted(list, key=lambda x: x['coin'], reverse=True)
     top = list[0]
     qqid = str(top['qq']).split('.json')[0]  # 返回.json之前的内容
-    改称号(qqid,7)   #国服冠军
+    改称号(qqid,8)   #国服冠军
     top = list[1]
     qqid = str(top['qq']).split('.json')[0]  # 返回.json之前的内容
-    hdic = {'默默无闻':0,'国服百强':1,'国服五十强':2,'国服十强':3,'国服殿军':4 ,'国服季军':5,'国服亚军':6,'国服冠军':7}
-    if hdic[查称号(qqid)] < 6:
-        改称号(qqid,6)   #国服亚军
+    hdic = {'默默无闻':0,'国服两百强':1,'国服百强':2,'国服五十强':3,'国服十强':4,'国服殿军':5,'国服季军':6,'国服亚军':7,'国服冠军':8}
+    if hdic[查称号(qqid)] < 7:
+        改称号(qqid,7)   #国服亚军
     top = list[2]
     qqid = str(top['qq']).split('.json')[0]  # 返回.json之前的内容
-    if hdic[查称号(qqid)] < 5:
-        改称号(qqid,5)   #国服季军
+    if hdic[查称号(qqid)] < 6:
+        改称号(qqid,6)   #国服季军
     top = list[3]
     qqid = str(top['qq']).split('.json')[0]  # 返回.json之前的内容
-    if hdic[查称号(qqid)] < 4:
-        改称号(qqid,4)   #国服殿军
+    if hdic[查称号(qqid)] < 5:
+        改称号(qqid,5)   #国服殿军
     for num in range (4,9):
         ten = list[num]
         qqid = str(ten['qq']).split('.json')[0]  #返回.json之前的内容
-        if hdic[查称号(qqid)] < 3:
-            改称号(qqid, 3)  #国服前十
+        if hdic[查称号(qqid)] < 4:
+            改称号(qqid, 4)  #国服前十
     for num in range (10,49):
         fifty = list[num]
         qqid = str(fifty['qq']).split('.json')[0]  #返回.json之前的内容
-        if hdic[查称号(qqid)] < 2:
-            改称号(qqid, 2)  #国服前五十
+        if hdic[查称号(qqid)] < 3:
+            改称号(qqid, 3)  #国服前五十
     for num in range (49,99):
         hund = list[num]
         qqid = str(hund['qq']).split('.json')[0]  #返回.json之前的内容
+        if hdic[查称号(qqid)] < 2:
+            改称号(qqid, 2)  #国服前百
+    for num in range (100,199):
+        hund = list[num]
+        qqid = str(hund['qq']).split('.json')[0]  #返回.json之前的内容
         if hdic[查称号(qqid)] < 1:
-            改称号(qqid, 1)  #国服前百
+            改称号(qqid, 1)  #国服前2百
 
 def 查上榜金币():
     list = []
@@ -157,7 +150,9 @@ def 查上榜金币():
     fif_coin = (fif['coin'])
     hund = list[99]
     hund_coin = (hund['coin'])
-    result = f'国服最强：{top_coin}金币\r国服十强：{ten_coin}金币\r国服五十强：{fif_coin}金币\r国服百强：{hund_coin}金币'
+    hund2 = list[199]
+    hund2_coin = (hund2['coin'])
+    result = f'国服最强：{top_coin}金币\r国服十强：{ten_coin}金币\r国服五十强：{fif_coin}金币\r国服百强：{hund_coin}金币\r国服两百强：{hund2_coin}金币'
     return (result)
 
 def 随机群():
@@ -167,7 +162,7 @@ def 随机群():
     return group
 
 def 取英雄号(name):
-    with open('wzry/英雄词典.json', 'r', encoding='utf-8')as f:
+    with open('resource/wzry/英雄词典.json', 'r', encoding='utf-8')as f:
         dic = json.load(f)
         return(dic[name])
 
@@ -178,7 +173,7 @@ def 生成英雄列表():
     for dic in list:
         英雄代码 = dic['ename']
         英雄列表.append(英雄代码)
-    with open('wzry/英雄列表.json', 'w+', encoding='utf-8')as f:
+    with open('resource/wzry/英雄列表.json', 'w+', encoding='utf-8')as f:
         json.dump(英雄列表, f)
 
 def 生成英雄词典():
@@ -189,5 +184,28 @@ def 生成英雄词典():
         英雄代码 = dic['ename']
         英雄名 = dic['cname']
         英雄词典[英雄名] = 英雄代码
-    with open('wzry/英雄词典.json', 'w+', encoding='utf-8')as f:
+    with open('resource/wzry/英雄词典.json', 'w+', encoding='utf-8')as f:
         json.dump(英雄词典, f)
+
+def 查chess排位分(qqid):
+    查金币(qqid)
+    with open(f'data/艾琳/用户/{qqid}.json', 'r', encoding='utf-8')as f:
+        chessdic = json.load(f)
+    return chessdic['chess']
+
+def 查chess段位(qqid):
+    score = 查chess排位分(qqid)
+    ranklist = ['棋手🏅','青铜棋手🏅','白银棋手🏅','黄金棋手🏅','铂金棋手🏅','钻石棋手🏅','星耀棋手🏅','大师棋手🏅','宗师棋手🏅']
+    score1 = int(pow(score,0.5))
+    return ranklist[score1]
+
+def 加chess排位分(qqid,num):
+    查金币(qqid)
+    with open(f'data/艾琳/用户/{qqid}.json', 'r+', encoding='utf-8')as f:
+        chessdic = json.load(f)
+        score = chessdic['chess']
+        score += num
+        chessdic['chess'] = score
+        f.seek(0)  # 指向文本开头
+        f.truncate()  # 清空文本
+        json.dump(chessdic, f)  # 写入数据
