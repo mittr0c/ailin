@@ -10,7 +10,7 @@
     <img src="https://img.shields.io/badge/python-3.8+-blue" alt="python">
     <img src="https://img.shields.io/badge/nonebot-2.0.0-green">
     <img src="https://img.shields.io/badge/go--cqhttp-1.0.0-yellow">
-    <img src="https://img.shields.io/badge/版本号-1.3.0-red" alt="version">
+    <img src="https://img.shields.io/badge/版本号-1.4.0-red" alt="version">
     <a href="https://jq.qq.com/?_wv=1027&k=CXHuHAmp"><img src="https://img.shields.io/badge/加入-测试群-pink"alt="QQ guild"></a>
 </p>
 
@@ -27,11 +27,19 @@
 #### | 艾琳bot `菜单` `功能` `帮助` `目录`
 - [ ] 常规类
 - - [x] <strong>签到</strong>  `签到` `打卡` `冒泡`
-- - [x] <strong>金币查询</strong> `金币` `金币 qq号` `排名` 
-- - [x] <strong>获得金币</strong> `淘金` `抽奖`
+- - [x] <strong>金币查询</strong> `金币 qq号` `排行榜` 
+- - [x] <strong>获得金币</strong> `挖矿` `抽奖` `抽奖 5`
+- - [x] <strong>银行</strong> `银行` `存金币 50` `借金币 50`
 - [ ] 人工智能
 - - [x] <strong>AI写歌词</strong> `写歌词` `歌词 xxx`
 - - [x] <strong>AI对联</strong> `对联` `对联 xxx 5`
+- [ ] 娱乐类
+- - [x] <strong>农场</strong> `农场` `我的物品` `我的土地`
+- - [x] <strong>国际象棋</strong> `国际象棋` `chess`
+- - [x] <strong>点歌台</strong> `点歌台` `点歌 xxx`
+- - [x] <strong>漂流瓶</strong> `扔漂流瓶 xxx` `捡漂流瓶`
+- - [x] <strong>猜英雄</strong> `猜英雄` `猜英雄 英雄名`
+- - [x] <strong>一言</strong> `一言` `随机一言`
 - [ ] 查询类
 - - [x] <strong>查战力</strong> `查战力 英雄名`
 - - [x] <strong>查出装</strong> `查出装 英雄名`
@@ -39,13 +47,6 @@
 - - [x] <strong>光遇</strong> `光遇今日攻略`
 - - [x] <strong>天气</strong> `天气 城市名`
 - - [x] <strong>查百科</strong> `百科 xxx`
-- [ ] 娱乐类
-- - [x] <strong>国际象棋</strong> `国际象棋` `chess`
-- - [x] <strong>英雄对战</strong> `抽卡` `卡包` `匹配`
-- - [x] <strong>点歌台</strong> `点歌台` `点歌 xxx`
-- - [x] <strong>漂流瓶</strong> `扔漂流瓶 xxx` `捡漂流瓶`
-- - [x] <strong>猜英雄</strong> `猜英雄` `猜英雄 英雄名`
-- - [x] <strong>一言</strong> `一言` `随机一言`
 - [ ] 更多
 - - [x] <strong>关于</strong> `关于` `开发人员`
 
@@ -91,13 +92,17 @@ python bot.py
 
 ## 丨更新日志
 
+#### v1.4.0
+
+新功能：农场功能、银行功能
+
+修复了一些bug
+
 #### v1.3.0
 
 新功能：英雄对战
 
 增加了国际象棋插件、狼人杀插件，修改了插件的一些代码
-
-修复了一些bug
 
 #### v1.2.1
 
