@@ -117,7 +117,7 @@ class SkyDaily:
 async def _(bot: Bot, event: GroupMessageEvent):
     qq_id = str(event.user_id)  # 获取qq号
     if 查金币(qq_id) < 3:
-        await daily_yoli.send("需花费3金币，发送“签到”或“群里淘金”获得金币")
+        await daily_yoli.send("需花费3金币，发送“签到”或“采矿”获得金币")
     else:
         减金币(qq_id,3)
         try:

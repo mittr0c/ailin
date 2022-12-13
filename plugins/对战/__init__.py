@@ -368,7 +368,7 @@ async def _(event: GroupMessageEvent):
         num = int(str(event.message).split(maxsplit=1)[1])  #返回空格之后的内容
     需要金币 = int(num) * 10
     if 当前金币 < 需要金币:
-        await 抽卡1.send(f"每张卡10金币，发送“签到”或“群里淘金”获得金币")
+        await 抽卡1.send(f"每张卡10金币，发送“签到”或“采矿”获得金币")
     else:
         减金币(qq_id,需要金币)
         card = 抽卡(qq_id,num)

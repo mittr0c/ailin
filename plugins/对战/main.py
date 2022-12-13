@@ -10,6 +10,12 @@ def 台词(qqid):
     lines = random.choice(lines)
     return lines
 
+def 英雄台词(hero):
+    with open(f'resource/对战/lines/{hero}.json', 'r', encoding='utf-8')as f:
+        lines = json.load(f)  #英雄台词集
+    lines = random.choice(lines)
+    return lines
+
 def 结算(desk):  #返回：[结算语,名次],[结算语,名次],……
     playlist = 取玩家列表(desk)
     结算list = []

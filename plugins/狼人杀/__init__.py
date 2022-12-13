@@ -90,7 +90,7 @@ async def _(event: MessageEvent):
                 await jn.finish("已达到最大人数，无法参加，请发“开始狼人杀”")
             cf.joiner.append(event.get_user_id())
             finalpool.member_group.setdefault(qq, group)
-            await jn.send(f"参加游戏成功，已参加{len(cf.joiner)}人，发“开始狼人杀”即可开始")
+            await jn.send(f"参加游戏成功，已参加{len(cf.joiner)}人，先加艾琳好友，等会要私聊发身份。达到12人发“开始狼人杀”即可开始")
         else:
             await jn.send("游戏房间不存在，请先发“创建狼人杀”")
     else:
@@ -111,7 +111,7 @@ async def _(event: MessageEvent):
             n = len(l)
             if n < min_n:
                 await ks.finish(f"至少需要{min_n}人，请发送“参加狼人杀”")
-            if cf.game_start:
+            elif cf.game_start:
                 await ks.finish("游戏正在运行中,请勿重复开启")
             else:
                 cf.group = group    # 设置群组配置

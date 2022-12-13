@@ -31,7 +31,7 @@ couplets = on_command('对联', aliases={'对对联'}, priority=13, block=True, 
 async def _(event: GroupMessageEvent, state: T_State, msg: Message = CommandArg(), num: List[float] = Numbers()):
     qq_id = event.user_id
     if 查金币(qq_id) < 1:
-        await couplets.send("对联需花费1金币，发送“签到”或“群里淘金”获得金币")
+        await couplets.send("对联需花费1金币，发送“签到”或“采矿”获得金币")
     else:
         减金币(qq_id,1)
         msg = msg.extract_plain_text().strip()

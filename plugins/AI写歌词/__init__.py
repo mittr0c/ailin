@@ -24,7 +24,7 @@ async def _(event: GroupMessageEvent):
     qq_id = str(event.user_id)  # 获取qq号
     当前金币 = 查金币(qq_id)
     if 当前金币 < 2:
-        await 歌词1.send("需花费2金币，发送“签到”或“群里淘金”获得金币")
+        await 歌词1.send("需花费2金币，发送“签到”或“采矿”获得金币")
     elif str(event.message) == '写歌词' or str(event.message) == 'AI写歌词' or str(event.message) == 'ai写歌词' or str(event.message) == '歌词':
         await 歌词1.send("发送“歌词 你想说的话”，注意空一格")
     else:
