@@ -109,12 +109,9 @@ async def _(bot:Bot,event: GroupMessageEvent):
                 f.truncate()  # 清空文本
                 json.dump(dic, f)  # 写入数据
                 await 挖矿1.send(f"此群{群人数}人，你是第{挖矿人数}个挖矿的，获得金币{获得金币}，当前金币：{查金币(qq_id)}")
-
-                随机 = random.randint(0, 100)
-                if 随机 >= 53 or qq_id == '3142331296':
-                    礼品 = random.choice(查图鉴('mines'))
-                    加物品(qq_id,礼品,1)
-                    await 抽奖1.send(f"中大奖，获得1{礼品}，发“农场”查看玩法")
+                礼品 = random.choice(查图鉴('mines'))
+                加物品(qq_id,礼品,1)
+                await 抽奖1.send(f"中大奖，获得1{礼品}，发“农场”查看玩法")
 
 @设置1.handle()
 async def _(event: GroupMessageEvent):
@@ -292,15 +289,16 @@ async def _(event: GroupMessageEvent):
             数量 = 查数量(qqid, 物品)
             if 数量 != 0:
                 物品集 += 物品 + str(数量) + '|'
-        await 土地1.send(f'{类型}:{物品集}')
+        if len(mylist) > 0:
+            await 土地1.send(f'{类型}:{物品集}')
 
     landic = 查土地(qqid)
     生产列表 = landic.keys()
     生产集 = str()
-    for 生产 in 生产列表:
-        生产集 += 生产 + str(landic[生产]) + ','
-
-    await 土地1.send(f'生产中:{生产集}')
+    if len(生产列表) > 0:
+        for 生产 in 生产列表:
+            生产集 += 生产 + str(landic[生产]) + ','
+        await 土地1.send(f'生产中:{生产集}')
 
 @货架1.handle()
 async def _(event: GroupMessageEvent):
@@ -409,7 +407,7 @@ async def _(event: GroupMessageEvent):
     '''判断金币是否足够'''
     if 指令 == '制':
         需要金币 = 0
-        需要时间 = int(60 / (1 + 查数量(qqid,查原料(art)[0])))
+        需要时间 = int(600 / (1 + 查数量(qqid,查原料(art)[0])))
     else:
         需要金币 = 数量 * 查价格(art)
         需要时间 = str(查时间(art))

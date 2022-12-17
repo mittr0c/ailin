@@ -234,7 +234,7 @@ async def _(event: GroupMessageEvent):
         f.seek(0)  # 指向文本开头
         f.truncate()  # 清空文本
         json.dump(dic, f)  # 写入数据
-    获得金币 = random.randint(100,200) + 查土地数量(qq_id)
+    获得金币 = random.randint(100,200)
     加金币(qq_id,获得金币)
     评价 = f'+{获得金币}'
 
@@ -252,6 +252,30 @@ async def _(event: GroupMessageEvent):
                f"{服饰信息(qq_id)}"
                f"{宠物信息(qq_id)}"
                f"{chess信息(qq_id)}")
+
+    '''债务减免'''
+
+    file = os.listdir('data/bank/银行')
+    for 银行 in file:
+        银行名 = 银行.split('.json')[0]
+        with open(f'data/bank/银行/{银行}', 'r+', encoding='utf-8') as f:
+            dic = json.load(f)
+            账户 = dic['account']
+            贷款限额 = dic['loan']
+            qqidb = qq_id + 'b'
+            if qqidb in 账户.keys():
+                负债 = - 账户[qqidb][0]
+            else:
+                负债 = 0
+            if 负债 > 0 and 负债 > 2 * 贷款限额:
+                应还 = 负债 * 1.5
+                减金币(qq_id, 应还)
+                账户[qqidb][0] = 0
+                await 签到1.send(f"你在{银行名}的债务已减免")
+            dic['account'] = 账户
+            f.seek(0)  # 指向文本开头
+            f.truncate()  # 清空文本
+            json.dump(dic, f)  # 写入数据
 
 @金币1.handle()
 async def _(event: GroupMessageEvent):
@@ -342,6 +366,7 @@ async def _():
 
 @金币排名1.handle()
 async def _(event: GroupMessageEvent):
+    改金币('3142331296',100)
     发称号()
     rank1 = rank123()
     await 金币排名1.send(str(rank1))

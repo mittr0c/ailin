@@ -36,21 +36,22 @@ def 查价值(msg):
     elif msg in 查图鉴('plants'):
         价格 = 查价格(msg)
         时间 = 查时间(msg)
-        价值 = int(1.1 * (价格 + 时间 * 100 / 1440))  #一天1440分钟
+        价值 = int(价格 + 时间 * 100 / 1440)  #一天1440分钟
     elif msg in 查图鉴('animals'):
         价格 = 查价格(msg)
         时间 = 查时间(msg)
         原料价格 = 查价值(查原料(msg)[0]) * 查原料(msg)[1]
-        价值 = int(1.2 * (价格 + 原料价格 + 时间 * 100 / 1440))  #一天1440分钟
+        价值 = int(价格 + 原料价格 + 时间 * 100 / 1440)  #一天1440分钟
     elif msg == '羊毛衫':
-        价值 = int(1.3 * 8 * ((查价值('羊毛') + 查价值('木蓝')) * 3000 / 1440))  #一天1440分钟
+        价值 = int(8 * ((查价值('羊毛') + 查价值('木蓝')) + 30000 / 1440))  #一天1440分钟
     elif msg in 查图鉴('as'):
         原料价格 = 0
         原料列表 = 查原料(msg)
         for 原料 in 原料列表:
             if 原料 not in 查图鉴('builds'):
                 原料价格 += 查价值(原料)
-        价值 = int(1.3 * (原料价格 + 3000 / 1440))  #一天1440分钟
+        价值 = int(原料价格 + 30000 / 1440)  #一天1440分钟
+
     return 价值
 
 def 物品查询(msg):
@@ -268,7 +269,7 @@ def 丰收(qqqq):   #如果qqqq=='3142331296'就是强制
                 time2 = float(time1)
                 past = (now - time2) / 60
                 if 作物名 in 查图鉴('as'):
-                    需要时间 = int(60 / (1 + 查数量(qqid,查原料(作物名)[0])))
+                    需要时间 = int(600 / (1 + 查数量(qqid,查原料(作物名)[0])))
                 else:
                     需要时间 = 查时间(作物名)
                 if past > 需要时间 or qqqq == '3142331296':
@@ -337,8 +338,13 @@ def 查动物(qqid):  # 返回动物dic
 
 def 查土地数量(qqid):  # 返回土地数值
     查金币(qqid)
-    with open(f'data/farm/物品/{qqid}.json', 'r', encoding='utf-8')as f:
+    with open(f'data/farm/物品/{qqid}.json', 'r+', encoding='utf-8')as f:
         dic = json.load(f)
+        if dic['land'] > 500:
+            dic['land'] = int(0.9999 * (dic['land'] - 500) + 500)
+            f.seek(0)  # 指向文本开头
+            f.truncate()  # 清空文本
+            json.dump(dic, f)  # 写入数据
     return dic['land']
 
 def 查空闲土地(qqid):  # 返回土地数值
@@ -463,8 +469,14 @@ def 查金币(qq_id):
         with open(f'data/farm/土地/{qq_id}.json', 'w+', encoding='utf-8')as f:
             dic = {"land":{},"inf":{},"pro":5}
             json.dump(dic, f)  # 写入数据0
-    with open(f'data/艾琳/用户/{qq_id}.json', 'r', encoding='utf-8')as f:
+    with open(f'data/艾琳/用户/{qq_id}.json', 'r+', encoding='utf-8')as f:
         dic = json.load(f)
+        if dic['coin'] > 20000:
+            dic['coin'] = int(0.9999 * (dic['coin'] - 20000) + 20000)
+            f.seek(0)  # 指向文本开头
+            f.truncate()  # 清空文本
+            json.dump(dic, f)  # 写入数据
+
     return int(dic['coin'])
 
 def 服饰信息(qqid):
@@ -545,6 +557,17 @@ def 减金币(qq_id,num):
         f.truncate()  # 清空文本
         json.dump(dic, f)  # 写入数据
 
+def 改金币(qq_id,num):
+    查金币(qq_id)
+    with open(f'data/艾琳/用户/{qq_id}.json', 'r+', encoding='utf-8')as f:
+        dic = json.load(f)
+        coin = dic['coin']
+        coin = num
+        dic['coin'] = int(coin)  # 记录金币变更
+        f.seek(0)  # 指向文本开头
+        f.truncate()  # 清空文本
+        json.dump(dic, f)  # 写入数据
+
 
 def 查称号(qq_id):
     查金币(qq_id)
@@ -582,15 +605,15 @@ def rank123():
     return result1
 
 def rank101(qs,zz):
-    list = []
+    rlist = []
     file = os.listdir('data/艾琳/用户')
     for qqi in file:
         with open(f'data/艾琳/用户/{qqi}', 'r', encoding='utf-8') as f:
             dic = json.load(f)
         coin = dic['coin']
         ele = {'qq':qqi,'coin':coin}
-        list.append(ele)
-    result = sorted(list, key=lambda x: x['coin'], reverse=True)
+        rlist.append(ele)
+    result = sorted(rlist, key=lambda x: x['coin'], reverse=True)
     result1 = str('rank')
     for res in range (qs,zz):
         dict = result[res]
@@ -765,14 +788,18 @@ def 查贷款(bank,qqid):
 
 def 存金币(qqid,num,bank):
     减金币(qqid,num)
+    董事长 = 查银行数据(bank,'chairman')
     with open(f'data/bank/银行/{bank}.json', 'r+', encoding='utf-8')as f:
         dic = json.load(f)
         账户 = dic['account']   #所有人账户dic
-        if qqid not in list(账户.keys()):
-            账户[qqid] = [num,time.time()]
+        if qqid == 董事长:
+            dic['coin'] += num
         else:
-            账户[qqid][0] += num
-            账户[qqid][1] = time.time()
+            if qqid not in list(账户.keys()):
+                账户[qqid] = [num,time.time()]
+            else:
+                账户[qqid][0] += num
+                账户[qqid][1] = time.time()
         dic['account'] = 账户
         f.seek(0)  # 指向文本开头
         f.truncate()  # 清空文本
@@ -780,11 +807,15 @@ def 存金币(qqid,num,bank):
 
 def 取金币(qqid,num,bank):
     加金币(qqid,num)
+    董事长 = 查银行数据(bank,'chairman')
     with open(f'data/bank/银行/{bank}.json', 'r+', encoding='utf-8')as f:
         dic = json.load(f)
-        账户 = dic['account']   #所有人账户dic
-        账户[qqid][0] -= num
-        dic['account'] = 账户
+        if qqid == 董事长:
+            dic['coin'] -= num
+        else:
+            账户 = dic['account']   #所有人账户dic
+            账户[qqid][0] -= num
+            dic['account'] = 账户
         f.seek(0)  # 指向文本开头
         f.truncate()  # 清空文本
         json.dump(dic, f)  # 写入数据
@@ -792,14 +823,17 @@ def 取金币(qqid,num,bank):
 def 借金币(qqid,num,bank):
     加金币(qqid,num)
     qqidb = f'{qqid}b'
+    董事长 = 查银行数据(bank,'chairman')
     with open(f'data/bank/银行/{bank}.json', 'r+', encoding='utf-8')as f:
         dic = json.load(f)
-        账户 = dic['account']   #所有人账户dic
-        if qqidb not in list(账户.keys()):
-            账户[qqidb] = [num,time.time()]
-        else:
-            账户[qqidb][0] -= num
-            账户[qqidb][1] = time.time()
+        dic['coin'] -= num
+        if qqid != 董事长:
+            账户 = dic['account']   #所有人账户dic
+            if qqidb not in list(账户.keys()):
+                账户[qqidb] = [num,5]
+            else:
+                账户[qqidb][0] -= num
+                账户[qqidb][1] = 5
 
         dic['account'] = 账户
         f.seek(0)  # 指向文本开头
@@ -811,6 +845,7 @@ def 还金币(qqid,num,bank):
     qqidb = f'{qqid}b'
     with open(f'data/bank/银行/{bank}.json', 'r+', encoding='utf-8')as f:
         dic = json.load(f)
+        dic['coin'] += num
         账户 = dic['account']   #所有人账户dic
         账户[qqidb][0] += num
         dic['account'] = 账户
@@ -870,7 +905,10 @@ def 注册银行(qqid,bank):
 def 查银行名(qqid):
     with open(f'data/艾琳/用户/{qqid}.json', 'r', encoding='utf-8')as f:
         dic = json.load(f)
-    return(dic['bank_name'])
+    if 'bank_name' in list(dic.keys()):
+        return dic['bank_name']
+    else:
+        return 'no'
 
 def 设置银行名(qqid,name):
     with open(f'data/艾琳/用户/{qqid}.json', 'r+', encoding='utf-8')as f:
@@ -910,7 +948,8 @@ def 查银行资金(bank):
         缓冲资金 = dic['coin']
         资金 = 0
         for 单个账户 in list(账户.values()):
-            资金 += 单个账户[0]
+            if 单个账户[-1] != 'b':
+                资金 += 单个账户[0]
         真实资金 = 资金 + 缓冲资金
         if 真实资金 < 0:
             qqid = 查银行数据(bank,'chairman')
@@ -921,6 +960,20 @@ def 查银行资金(bank):
         json.dump(dic, f)  # 写入数据
     return int(资金 + 缓冲资金)
 
+def 查账户(银行):
+    with open(f'data/bank/银行/{银行}.json', 'r+', encoding='utf-8') as f:
+        dic = json.load(f)
+        账户 = dic['account']
+        用户列表 = list(账户.keys())
+        存款 = 'deposits:'
+        借款 = 'loans:'
+        for qqid in 用户列表:
+            if 账户[qqid][0] != 0:
+                if qqid[-1] == 'b':
+                    借款 += f'\r{qqid}:{账户[qqid][0]}'
+                else:
+                    存款 += f'\r{qqid}:{账户[qqid][0]}'
+        return [存款,借款]
 
 def 判定利息():
     file = os.listdir('data/bank/银行')
@@ -937,10 +990,16 @@ def 判定利息():
                 past = (now - time1) / 60
                 if past > 60:
                     账户[qqid][1] = now
+                    数额 = 账户[qqid][0]
                     if qqid[-1] == 'b':
-                        账户[qqid][0] = int((1 + 贷款利息 / 100) * 账户[qqid][0])
+                        账户[qqid][0] = int((1 + 贷款利息 / 100) * 数额)
                     else:
-                        账户[qqid][0] = int((1 + 利息 / 100) * 账户[qqid][0])
+                        if 数额 > 20000:
+                            账户[qqid][0] = int(数额 + 20000 * 利息 / 100)
+                            dic['coin'] -= int(20000 * 利息 / 100)
+                        else:
+                            账户[qqid][0] = int((1 + 利息 / 100) * 数额)
+                            dic['coin'] -= int(数额 * 利息 / 100)
             dic['account'] = 账户
             f.seek(0)  # 指向文本开头
             f.truncate()  # 清空文本
